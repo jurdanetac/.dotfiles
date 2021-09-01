@@ -1,0 +1,99 @@
+#+TITLE: init.el
+#+AUTHOR: jurdanetac
+#+DESCRIPTION: Emacs config.
+#+STARTUP: content
+
+* init.el
+#+BEGIN_SRC
+(org-babel-load-file
+ (expand-file-name "settings.org"
+                   user-emacs-directory))
+#+END_SRC
+* Packages
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+
+;; Update package archives if no db is found
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Use-package declaration for simplifying your .emacs
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+;; Ensure all packages are installed on launch
+(setq use-package-always-ensure t)
+
+;; Vi emulation layer
+(use-package evil
+  :init (evil-mode 1))
+#+END_SRC
+* Theme
+#+BEGIN_SRC emacs-lisp
+;; Doom Emacs themes
+(use-package doom-themes
+  :init (load-theme 'doom-one t))
+
+  ;; Doom Emacs modeline
+(use-package doom-modeline
+  :init (doom-modeline-mode 1))
+
+;; Pretty icons
+(use-package all-the-icons)
+#+END_SRC
+* UI Tweaks
+#+BEGIN_SRC emacs-lisp
+;; Flash screen on exception insted of bell sound
+(setq visible-bell 1)
+
+;; Hide interface tools
+(setq inhibit-startup-screen t)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; Display line numbers and truncate long lines
+(global-display-line-numbers-mode 1)
+(global-visual-line-mode t)
+
+;; Display matching pairs of some characters (and disable delay)
+(setq show-paren-delay 0)
+(show-paren-mode 1)
+#+END_SRC
+* Keybindings
+#+BEGIN_SRC emacs-lisp
+;; Shortcuts for +/- zooming
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+#+END_SRC
+* Whitespace
+#+BEGIN_SRC emacs-lisp
+(setq whitespace-style '(face trailing space-mark tab-mark lines-tail))
+;; Highlight whitespace and show 80-column warning
+(global-whitespace-mode t)
+
+;; Use spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+#+END_SRC
+* Mouse scrolling
+#+BEGIN_SRC emacs-lisp
+;; >100 gets rid of half page jumping
+(setq scroll-conservatively 101)
+;; How many lines at a time
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 3)))
+;; Accelerate scrolling
+(setq mouse-wheel-progressive-speed 1)
+#+END_SRC
+* Dashboard
+#+BEGIN_SRC emacs-lisp
+(use-package dashboard
+  :init
+  (setq dashboard-center-content t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-startup-banner "~/.emacs.d/banners/oldlogo.png")
+  (setq dashboard-banner-logo-title "An extensible, customizable, free/libre text editor — and more!")
+  :config
+  (dashboard-setup-startup-hook))
+#+END_SRC
