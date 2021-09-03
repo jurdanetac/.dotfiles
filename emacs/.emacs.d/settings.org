@@ -28,20 +28,6 @@
   (package-refresh-contents))
 #+END_SRC
 
-** Theme
-   An opinionated pack of modern color-themes, a fancy and fast mode-line
-   inspired by minimalism design and pretty icons. (Doom Emacs theme)
-
-#+BEGIN_SRC emacs-lisp
-(use-package doom-themes
-  :init (load-theme 'doom-one t))
-
-(use-package doom-modeline
-  :init (doom-modeline-mode 1))
-
-(use-package all-the-icons)
-#+END_SRC
-
 ** Packages
 
 #+BEGIN_SRC emacs-lisp
@@ -55,6 +41,26 @@
 ;; Vi emulation layer
 (use-package evil
   :init (evil-mode 1))
+
+;;  Minor mode that deals with parens pairs and tries to be smart about it
+(use-package smartparens
+  :config
+  (setq sp-highlight-pair-overlay nil)
+  (smartparens-global-strict-mode t))
+#+END_SRC
+
+** Theme
+   An opinionated pack of modern color-themes, a fancy and fast mode-line
+   inspired by minimalism design and pretty icons. (Doom Emacs theme)
+
+#+BEGIN_SRC emacs-lisp
+(use-package doom-themes
+  :init (load-theme 'doom-one t))
+
+(use-package doom-modeline
+  :init (doom-modeline-mode 1))
+
+(use-package all-the-icons)
 #+END_SRC
 
 * UI Tweaks
