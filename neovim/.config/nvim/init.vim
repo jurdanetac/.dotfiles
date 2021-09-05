@@ -1,7 +1,7 @@
 " This config is intended to be used on neovim 0.4.3 (Ubuntu's 20.04 version')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ↪ General settings
+" ↪ Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/pack/default/start/gruvbox/colors/gruvbox.vim"'))
 	echo "Downloading gruvbox colorscheme... (First launch, this could take a few seconds)"
