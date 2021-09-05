@@ -1,0 +1,9 @@
+#+TITLE: README.org
+#+AUTHOR: jurdanetac
+#+STARTUP: content
+
+* Important!
+  Many of the configs I use are inspired on Derek Taylor's, check them on:
+  https://gitlab.com/dwt1/dotfiles
+
+TODO
