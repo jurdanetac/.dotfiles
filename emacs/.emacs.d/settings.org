@@ -46,7 +46,7 @@
 (use-package smartparens
   :config
   (setq sp-highlight-pair-overlay nil)
-  (smartparens-global-strict-mode t))
+  (smartparens-global-mode t))
 #+END_SRC
 
 ** Theme
@@ -107,10 +107,6 @@
 #+BEGIN_SRC emacs-lisp
 ;; >100 gets rid of half page jumping
 (setq scroll-conservatively 101)
-;; Accelerate scrolling
-(setq mouse-wheel-progressive-speed 1)
-;; Lines at a time
-(setq mouse-wheel-scroll-amount '(3 ((shift) . 3)))
 #+END_SRC
 
 * Whitespace
