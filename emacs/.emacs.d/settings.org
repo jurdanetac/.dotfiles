@@ -7,6 +7,7 @@
   of your custom configuration. Remember to load this org file in your init.el!
 
 #+BEGIN_SRC
+(require 'org)
 (org-babel-load-file
  (expand-file-name "settings.org"
                    user-emacs-directory))
@@ -90,6 +91,9 @@
 ;; Display line numbers and truncate long lines
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
+
+;; Enable hide-show minor mode globally for vim-like line folding
+(add-hook 'prog-mode-hook #'hs-minor-mode)
 
 ;; Display matching pairs of ()[]{} without delay
 (setq show-paren-delay 0)
