@@ -88,24 +88,8 @@
 ;; Disable all alarms, sound is annoying and visual bell hangs the screen for a
 ;; while when top/bottom is reached with mouse scrolling
 (setq ring-bell-function 'ignore)
-#+END_SRC
 
-* Keybindings
-  These are user-defined shorcuts for functions, re-binding, etc...
-  Vi-like layer is covered by Evil mode on Packages!
-
-** Shortcuts for +/- zooming
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-=") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-#+END_SRC
-
-* Mouse scrolling
-  Tweaks to move around the buffer more neatly with the mouse's wheel
-
-#+BEGIN_SRC emacs-lisp
-;; >100 gets rid of half page jumping
+;; Mouse scrolling >100 gets rid of half page jumping
 (setq scroll-conservatively 101)
 #+END_SRC
 
@@ -139,4 +123,43 @@
   (setq dashboard-banner-logo-title "An extensible, customizable, free/libre text editor — and more!")
   :config
   (dashboard-setup-startup-hook))
+#+END_SRC
+* Programming Languages
+  TODO: mainly major-modes config as linting...
+
+** Python
+   Load out-of-the-box Flymake, a universal on-the-fly buffer checker
+   Pyflakes must be installed for backend, run: $ pip install --upgrade pyflakes
+
+#+BEGIN_SRC emacs-lisp
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                           (file-name-directory buffer-file-name))))
+  (list "pyflakes" (list local-file))))
+
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pyflakes-init)))
+
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+#+END_SRC
+* Keybindings
+  These are user-defined shorcuts for functions, re-binding, etc...
+  Vi-like layer is covered by Evil mode on Packages!
+
+** Shortcuts for +/- zooming
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+#+END_SRC
+
+** Flymake
+
+#+BEGIN_SRC emacs-lisp
+(define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+(define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
 #+END_SRC

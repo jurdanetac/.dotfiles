@@ -1,5 +1,9 @@
-* Important!
-  Many of the configs I use are inspired on Derek Taylor's, check them on:
-  https://gitlab.com/dwt1/dotfiles
+#+TITLE: all my dotfiles!
 
 TODO
+
+* Important!
+  Many of the configs I use are inspired on Derek Taylor's, check them on:
+  http://gitlab.com/dwt1/dotfiles
+
+* GNU Stow
