@@ -1,4 +1,5 @@
 auto-save-list/
+bookmarks
 # Ignore package's cache
 elpa/
 eshell/history

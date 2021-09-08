@@ -29,24 +29,44 @@
 #+END_SRC
 
 ** Packages
+*** Use-package
+    Use-package declaration for simplifying your .emacs
 
 #+BEGIN_SRC emacs-lisp
-;; Use-package declaration for simplifying your .emacs
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
 ;; Ensure all packages are installed on launch
+(require 'use-package-ensure)
 (setq use-package-always-ensure t)
+#+END_SRC
 
-;; Vi emulation layer
+*** Evil mode
+    Vi emulation layer
+
+#+BEGIN_SRC emacs-lisp
 (use-package evil
   :init (evil-mode 1))
 
-;;  Minor mode that deals with parens pairs and tries to be smart about it
+#+END_SRC
+
+*** Smartparens
+    Minor mode that deals with parens pairs and tries to be smart about it
+
+#+BEGIN_SRC emacs-lisp
 (use-package smartparens
   :config
   (setq sp-highlight-pair-overlay nil)
   (smartparens-global-mode t))
+#+END_SRC
+
+*** Flycheck
+    On the fly syntax checking for GNU Emacs. Flycheck does not check buffers
+    itself but relies on external programs to check buffers!
+
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck
+  :init (global-flycheck-mode))
 #+END_SRC
 
 ** Theme
@@ -101,6 +121,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Highlight whitespace and after-80 columns
+(require 'whitespace)
 (setq whitespace-style '(face trailing space-mark tab-mark lines-tail))
 (global-whitespace-mode t)
 
@@ -124,28 +145,6 @@
   :config
   (dashboard-setup-startup-hook))
 #+END_SRC
-* Programming Languages
-  TODO: mainly major-modes config as linting...
-
-** Python
-   Load out-of-the-box Flymake, a universal on-the-fly buffer checker
-   Pyflakes must be installed for backend, run: $ pip install --upgrade pyflakes
-
-#+BEGIN_SRC emacs-lisp
-(when (load "flymake" t)
-  (defun flymake-pyflakes-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                           (file-name-directory buffer-file-name))))
-  (list "pyflakes" (list local-file))))
-
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pyflakes-init)))
-
-(add-hook 'find-file-hook 'flymake-find-file-hook)
-#+END_SRC
 * Keybindings
   These are user-defined shorcuts for functions, re-binding, etc...
   Vi-like layer is covered by Evil mode on Packages!
@@ -155,11 +154,4 @@
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
-#+END_SRC
-
-** Flymake
-
-#+BEGIN_SRC emacs-lisp
-(define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
-(define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
 #+END_SRC
