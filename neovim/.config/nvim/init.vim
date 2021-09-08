@@ -4,8 +4,8 @@
 " ↪ Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/pack/default/start/gruvbox/colors/gruvbox.vim"'))
-	echo "Downloading gruvbox colorscheme... (First launch, this could take a few seconds)"
-	silent !git clone "https://github.com/morhetz/gruvbox.git" ~/.config/nvim/pack/default/start/gruvbox
+        echo "Downloading gruvbox colorscheme... (First launch, this could take a few seconds)"
+        silent !git clone "https://github.com/morhetz/gruvbox.git" ~/.config/nvim/pack/default/start/gruvbox
 endif
 
 colorscheme gruvbox
@@ -26,6 +26,7 @@ set lazyredraw                " Buffer screen updates instead of redrawing
 set list                      " Useful to difference between tabs and spaces
 set mouse=nicr                " Mouse support
 set noruler                   " Hide cursor position
+set number                    " Show current line number
 set shiftwidth=4              " Number of spaces for each step of indent
 set shortmess+=I              " Don't give the intro message when starting Vim
 set smartcase                 " Case-sensitive search if using capital letters

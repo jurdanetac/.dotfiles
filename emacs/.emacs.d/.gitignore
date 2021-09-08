@@ -1,9 +1,10 @@
 auto-save-list/
+# Ignore package's cache
 elpa/
 eshell/history
-init.el~
 recentf
 recentf~
+init.el~
 settings.el
 settings.org~
 \#settings.org\#
