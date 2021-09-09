@@ -43,12 +43,15 @@
 #+END_SRC
 
 *** Evil mode
-    Vi emulation layer
+    The extensible vi layer for Emacs.
 
 #+BEGIN_SRC emacs-lisp
 (use-package evil
-  :init (evil-mode 1))
-
+  :init
+  ;; Split a window below/right the current one
+  (setq evil-vsplit-window-right t)
+  (setq evil-split-window-below t)
+  (evil-mode 1))
 #+END_SRC
 
 *** Smartparens
