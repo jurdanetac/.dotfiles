@@ -101,6 +101,9 @@
 ;; Display matching pairs of ()[]{} without delay
 (setq show-paren-delay 0)
 (show-paren-mode 1)
+
+;; HTML tag completion prompt
+(setq sgml-quick-keys 'close)
 #+END_SRC
 
 ** Disable stuff
