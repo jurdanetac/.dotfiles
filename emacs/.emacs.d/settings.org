@@ -98,6 +98,14 @@ It's Magit! A Git porcelain inside Emacs.
 (use-package magit)
 #+END_SRC
 
+*** Which-key
+Emacs package that displays available keybindings in popup
+
+#+BEGIN_SRC emacs-lisp
+(use-package which-key)
+  :init (which-key-mode)
+#+END_SRC
+
 ** Theme
 An opinionated pack of modern color-themes, a fancy and fast mode-line
 inspired by minimalism design and pretty icons. (Doom Emacs theme)
