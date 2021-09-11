@@ -51,7 +51,20 @@
   ;; Split a window below/right the current one
   (setq evil-vsplit-window-right t)
   (setq evil-split-window-below t)
+  (setq evil-want-keybinding nil)
+  :config
   (evil-mode 1))
+#+END_SRC
+
+*** Evil collection
+    This is a collection of Evil bindings for the parts of Emacs that Evil does
+    not cover properly by default, such as help-mode, M-x calendar, Eshell...
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
 #+END_SRC
 
 *** Smartparens
