@@ -3,21 +3,21 @@
 #+STARTUP: content
 
 * Load these settings on your init.el!
-  Using Org mode to tweak Emacs is a great way to organize and highlight parts
-  of your custom configuration. Remember to load this org file in your init.el!
+Using Org mode to tweak Emacs is a great way to organize and highlight parts
+of your custom configuration. Remember to load this org file in your init.el!
 
-#+BEGIN_SRC
+#+BEGIN_EXAMPLE
 (require 'org)
 (org-babel-load-file
  (expand-file-name "settings.org"
                    user-emacs-directory))
-#+END_SRC
+#+END_EXAMPLE
 
 * Add-ons
 ** Sources
-   MELPA is an ELPA-compatible package repository that contains an enormous
-   amount of useful Emacs packages. In contrast to ELPA, Emacs is not configured
-   by default to install packages from MELPA. You will have to configure it.
+MELPA is an ELPA-compatible package repository that contains an enormous
+amount of useful Emacs packages. In contrast to ELPA, Emacs is not configured
+by default to install packages from MELPA. You will have to configure it.
 
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -31,7 +31,7 @@
 
 ** Packages
 *** Use-package
-    Use-package declaration for simplifying your .emacs
+Use-package declaration for simplifying your .emacs
 
 #+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'use-package)
@@ -43,7 +43,7 @@
 #+END_SRC
 
 *** Evil mode
-    The extensible vi layer for Emacs.
+The extensible vi layer for Emacs.
 
 #+BEGIN_SRC emacs-lisp
 (use-package evil
@@ -51,14 +51,19 @@
   ;; Split a window below/right the current one
   (setq evil-vsplit-window-right t)
   (setq evil-split-window-below t)
+  ;; Evil collection assumes this setting is set to nil
   (setq evil-want-keybinding nil)
   :config
+  ;; :q should kill the current buffer rather than quitting Emacs entirely
+  (evil-ex-define-cmd "q" 'kill-current-buffer)
+  ;; Type :quit to close Emacs
+  (evil-ex-define-cmd "quit" 'evil-quit)
   (evil-mode 1))
 #+END_SRC
 
 *** Evil collection
-    This is a collection of Evil bindings for the parts of Emacs that Evil does
-    not cover properly by default, such as help-mode, M-x calendar, Eshell...
+This is a collection of Evil bindings for the parts of Emacs that Evil does
+not cover properly by default, such as help-mode, M-x calendar, Eshell...
 
 #+BEGIN_SRC emacs-lisp
 (use-package evil-collection
@@ -67,8 +72,17 @@
   (evil-collection-init))
 #+END_SRC
 
+*** Flycheck
+On the fly syntax checking for GNU Emacs. Flycheck does not check buffers
+itself but relies on external programs to check buffers!
+
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck
+  :init (global-flycheck-mode))
+#+END_SRC
+
 *** Smartparens
-    Minor mode that deals with parens pairs and tries to be smart about it
+Minor mode that deals with parens pairs and tries to be smart about it
 
 #+BEGIN_SRC emacs-lisp
 (use-package smartparens
@@ -77,25 +91,16 @@
   (smartparens-global-mode t))
 #+END_SRC
 
-*** Flycheck
-    On the fly syntax checking for GNU Emacs. Flycheck does not check buffers
-    itself but relies on external programs to check buffers!
-
-#+BEGIN_SRC emacs-lisp
-(use-package flycheck
-  :init (global-flycheck-mode))
-#+END_SRC
-
 *** Magit
-    It's Magit! A Git porcelain inside Emacs.
+It's Magit! A Git porcelain inside Emacs.
 
 #+BEGIN_SRC emacs-lisp
 (use-package magit)
 #+END_SRC
 
 ** Theme
-   An opinionated pack of modern color-themes, a fancy and fast mode-line
-   inspired by minimalism design and pretty icons. (Doom Emacs theme)
+An opinionated pack of modern color-themes, a fancy and fast mode-line
+inspired by minimalism design and pretty icons. (Doom Emacs theme)
 
 #+BEGIN_SRC emacs-lisp
 (use-package doom-themes
@@ -144,7 +149,7 @@
 #+END_SRC
 
 * Whitespace
-  I like the MSWord-like approach of the pilcrow (¶) toggle formatting marks
+I like the MSWord-like approach of the pilcrow (¶) toggle formatting marks
 
 #+BEGIN_SRC emacs-lisp
 ;; Use spaces instead of tabs
@@ -162,8 +167,24 @@
               (delete-trailing-whitespace))))
 #+END_SRC
 
+* Org Mode
+A GNU Emacs major mode for convenient plain text markup — and much more
+
+#+BEGIN_SRC emacs-lisp
+;; When active, indent text according to outline structure
+(add-hook 'org-mode-hook 'org-indent-mode)
+
+(setq org-directory "~/Documents/org/"
+      org-agenda-files '("~/Documents/org/agenda.org")
+      org-default-notes-file (expand-file-name "notes.org" org-directory)
+      ;; Non-nil means insert state change notes and time stamps into a drawer
+      org-log-into-drawer t
+      ;; Information to record when a task moves to the DONE state
+      org-log-done 'time)
+#+END_SRC
+
 * Dashboard
-  An extensible emacs startup screen showing you what’s most important.
+An extensible emacs startup screen showing you what’s most important.
 
 #+BEGIN_SRC emacs-lisp
 (use-package dashboard
@@ -177,8 +198,8 @@
 #+END_SRC
 
 * Keybindings
-  These are user-defined shorcuts for functions, re-binding, etc...
-  Vi-like layer is covered in Packages section!
+These are user-defined shorcuts for functions, re-binding, etc...
+Vi-like layer is covered in Packages section!
 
 ** Shortcuts for +/- zooming
 
