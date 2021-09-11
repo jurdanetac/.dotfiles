@@ -86,6 +86,13 @@
   :init (global-flycheck-mode))
 #+END_SRC
 
+*** Magit
+    It's Magit! A Git porcelain inside Emacs.
+
+#+BEGIN_SRC emacs-lisp
+(use-package magit)
+#+END_SRC
+
 ** Theme
    An opinionated pack of modern color-themes, a fancy and fast mode-line
    inspired by minimalism design and pretty icons. (Doom Emacs theme)
@@ -168,9 +175,10 @@
   :config
   (dashboard-setup-startup-hook))
 #+END_SRC
+
 * Keybindings
   These are user-defined shorcuts for functions, re-binding, etc...
-  Vi-like layer is covered by Evil mode on Packages!
+  Vi-like layer is covered in Packages section!
 
 ** Shortcuts for +/- zooming
 
