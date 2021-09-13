@@ -13,6 +13,19 @@ of your custom configuration. Remember to load this org file in your init.el!
                    user-emacs-directory))
 #+END_EXAMPLE
 
+* Startup performance
+Profile Emacs startup. TODO: Optimize
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "*** Emacs loaded in %s with %d garbage collections."
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))
+#+END_SRC
+
 * Add-ons
 ** Sources
 MELPA is an ELPA-compatible package repository that contains an enormous
@@ -68,7 +81,7 @@ not cover properly by default, such as help-mode, M-x calendar, Eshell...
 #+BEGIN_SRC emacs-lisp
 (use-package evil-collection
   :after evil
-  :config
+  :init
   (evil-collection-init))
 #+END_SRC
 
@@ -156,6 +169,13 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 (setq scroll-conservatively 101)
 #+END_SRC
 
+** Shortcuts for +/- zooming
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+#+END_SRC
+
 * Whitespace
 I like the MSWord-like approach of the pilcrow (¶) toggle formatting marks
 
@@ -185,10 +205,11 @@ A GNU Emacs major mode for convenient plain text markup — and much more
 (setq org-directory "~/Documents/org/"
       org-agenda-files '("~/Documents/org/agenda.org")
       org-default-notes-file (expand-file-name "notes.org" org-directory)
-      ;; Non-nil means insert state change notes and time stamps into a drawer
-      org-log-into-drawer t
+      org-ellipsis " ▼ "
       ;; Information to record when a task moves to the DONE state
-      org-log-done 'time)
+      org-log-done 'time
+      ;; Display images on org files: [[~/your/image/path.png]]
+      org-startup-with-inline-images t)
 #+END_SRC
 
 * Dashboard
@@ -203,15 +224,4 @@ An extensible emacs startup screen showing you what’s most important.
   (setq dashboard-banner-logo-title "An extensible, customizable, free/libre text editor — and more!")
   :config
   (dashboard-setup-startup-hook))
-#+END_SRC
-
-* Keybindings
-These are user-defined shorcuts for functions, re-binding, etc...
-Vi-like layer is covered in Packages section!
-
-** Shortcuts for +/- zooming
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-=") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
 #+END_SRC
