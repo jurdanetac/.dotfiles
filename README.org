@@ -38,5 +38,5 @@ stow neovim
 
 * Acknowledgments
 These content creators are my main inspirations for some of my tweaks!
-+ Derek Taylor: `https://www.youtube.com/c/DistroTube`
-+ David Wilson: `https://www.youtube.com/c/SystemCrafters`
++ Derek Taylor: https://www.youtube.com/c/DistroTube
++ David Wilson: https://www.youtube.com/c/SystemCrafters
