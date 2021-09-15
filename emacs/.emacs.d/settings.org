@@ -143,13 +143,16 @@ Emacs package that displays available keybindings in popup
 A GNU Emacs major mode for convenient plain text markup — and much more
 
 #+begin_src emacs-lisp
-(use-package org)
-
-(require 'org-tempo)
-(require 'ob-shell)
+(use-package org
+  :config
+  (require 'org-tempo)
+  (require 'ob-shell))
 
 (unless (package-installed-p 'org-plus-contrib)
   (package-install 'org-plus-contrib))
+
+;; Fix weird bug on first launch
+(org-reload)
 #+end_src
 
 ** Theme
