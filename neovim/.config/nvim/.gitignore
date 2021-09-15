@@ -1,3 +1,4 @@
 # Ignore directory for plugins
 pack/
 \#init.vim\#
+.netrwhist

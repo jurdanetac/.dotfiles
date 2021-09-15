@@ -1,9 +1,42 @@
-#+TITLE: all my dotfiles!
+#+TITLE: Personal configuration files
 
-TODO
+#+html: <p align="center"><img src="tux.png" /></p>
 
-* Important!
-  Many of the configs I use are inspired on Derek Taylor's, check them on:
-  http://gitlab.com/dwt1/dotfiles
+This is the repository where I store all my program's cofigurations I use on
+my GNU/Linux machine on a daily basis!
 
-* GNU Stow
+* Instructions for usage
+** Clone this repo on your home (~) folder
+Get a copy of this repo running this command on your shell:
+
+#+begin_src
+cd
+git clone https://github.com/jurdanetac/dotfiles ~/
+#+end_src
+
+If you have your own dotfiles dir (fatal: destination path '/home/user/dotfiles
+already exists and is not an empty directory.):
+
+#+begin_src
+cd
+git clone https://github.com/jurdanetac/dotfiles ~/jurdanetacdots
+#+end_src
+
+** Stow (copy) the directory of the config you want
+GNU Stow is an organizer for /usr/local software packages, but can be used for
+other organizing tasks. That's the reason of the long, redundant paths, the
+repo must be clone to your home folder though
+
+#+begin_src
+cd ~/dotfiles
+cp neovim/.config/nvim/init.vim ~/.config/nvim/init.vim
+
+;; stow users ex:
+cd ~/dotfiles
+stow neovim
+#+end_src
+
+* Acknowledgments
+These content creators are my main inspirations for some of my tweaks!
++ Derek Taylor: `https://www.youtube.com/c/DistroTube`
++ David Wilson: `https://www.youtube.com/c/SystemCrafters`

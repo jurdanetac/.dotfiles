@@ -1,23 +1,23 @@
 #+TITLE: Personal Emacs configuration
 #+AUTHOR: jurdanetac
-#+STARTUP: content
+#+STARTUP: overview
 
 * Load these settings on your init.el!
 Using Org mode to tweak Emacs is a great way to organize and highlight parts
 of your custom configuration. Remember to load this org file in your init.el!
 
-#+BEGIN_EXAMPLE
+#+begin_example
 (require 'org)
 (org-babel-load-file
  (expand-file-name "settings.org"
                    user-emacs-directory))
-#+END_EXAMPLE
+#+end_example
 
 * Startup performance
 Make startup faster by reducing the frequency of garbage collection and then use
 a hook to measure Emacs startup time
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 ;; The default is 800 kilobytes.  Measured in bytes.
 (setq gc-cons-threshold (* 50 1000 1000))
 
@@ -29,7 +29,7 @@ a hook to measure Emacs startup time
                              (float-time
                               (time-subtract after-init-time before-init-time)))
                      gcs-done)))
-#+END_SRC
+#+end_src
 
 * Add-ons
 ** Sources
@@ -37,21 +37,27 @@ MELPA is an ELPA-compatible package repository that contains an enormous
 amount of useful Emacs packages. In contrast to ELPA, Emacs is not configured
 by default to install packages from MELPA. You will have to configure it.
 
-#+BEGIN_SRC emacs-lisp
+TODO: expand
+
+#+begin_src emacs-lisp
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+;; For versions <= 9.5, orgmode.org hosts Org ELPA archives.
+;; Beware that no new Org versions will be released on Org ELPA after 9.5
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 ;; Update package archives if no past data is found
 (unless package-archive-contents
   (package-refresh-contents))
-#+END_SRC
+#+end_src
 
 ** Packages
 *** Use-package
 Use-package declaration for simplifying your .emacs
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
@@ -61,12 +67,12 @@ Use-package declaration for simplifying your .emacs
 ;; Ensure all packages are installed on launch
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
-#+END_SRC
+#+end_src
 
 *** Evil mode
 The extensible vi layer for Emacs and it's "dependencies"
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 ;; Required for Evil's `C-r`
 (use-package undo-tree
   :init (global-undo-tree-mode 1))
@@ -96,48 +102,61 @@ The extensible vi layer for Emacs and it's "dependencies"
   :after evil
   :init
   (evil-collection-init))
-#+END_SRC
+#+end_src
 
 *** Flycheck
 On the fly syntax checking for GNU Emacs. Flycheck does not check buffers
 itself but relies on external programs to check buffers!
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (use-package flycheck
   :init (global-flycheck-mode))
-#+END_SRC
+#+end_src
 
 *** Smartparens
 Minor mode that deals with parens pairs and tries to be smart about it
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (use-package smartparens
   :config
   (setq sp-highlight-pair-overlay nil)
   (smartparens-global-mode t))
-#+END_SRC
+#+end_src
 
 *** Magit
 It's Magit! A Git porcelain inside Emacs.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (use-package magit)
-#+END_SRC
+#+end_src
 
 *** Which-key
 Emacs package that displays available keybindings in popup
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (use-package which-key
   :init (which-key-mode)
   :config (setq which-key-idle-delay 0.3))
-#+END_SRC
+#+end_src
+
+*** Org mode
+A GNU Emacs major mode for convenient plain text markup — and much more
+
+#+begin_src emacs-lisp
+(use-package org)
+
+(require 'org-tempo)
+(require 'ob-shell)
+
+(unless (package-installed-p 'org-plus-contrib)
+  (package-install 'org-plus-contrib))
+#+end_src
 
 ** Theme
 An opinionated pack of modern color-themes, a fancy and fast mode-line
 inspired by minimalism design and pretty icons. (Doom Emacs theme)
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (use-package doom-themes
 :init (load-theme 'doom-gruvbox t))
 
@@ -145,12 +164,12 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
   :init (doom-modeline-mode 1))
 
 (use-package all-the-icons)
-#+END_SRC
+#+end_src
 
 * UI Tweaks
 ** Lines and characters
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 ;; Avoid surprises with the coding system
 (set-default-coding-systems 'utf-8)
 
@@ -167,11 +186,11 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 
 ;; HTML tag completion prompt
 (setq sgml-quick-keys 'close)
-#+END_SRC
+#+end_src
 
 ** Disable stuff
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 ;; Hide interface tools
 (setq inhibit-startup-screen t)
 (menu-bar-mode -1)
@@ -184,19 +203,19 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 
 ;; Mouse scrolling >100 gets rid of half page jumping
 (setq scroll-conservatively 101)
-#+END_SRC
+#+end_src
 
 ** Shortcuts for +/- zooming
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
-#+END_SRC
+#+end_src
 
 * Whitespace
 I like the MSWord-like approach of the pilcrow (¶) toggle formatting marks
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 ;; Use spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 
@@ -210,14 +229,18 @@ I like the MSWord-like approach of the pilcrow (¶) toggle formatting marks
           (lambda ()
             (unless (eq major-mode 'fundamental-mode)
               (delete-trailing-whitespace))))
-#+END_SRC
+#+end_src
 
 * Org Mode
-A GNU Emacs major mode for convenient plain text markup — and much more
+Your life in plain text!
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 ;; When active, indent text according to outline structure
 (add-hook 'org-mode-hook 'org-indent-mode)
+;; For any reason tab subtree cycling is not working after upgrading
+;; `org` to version 9.4.6
+(add-hook 'org-mode-hook
+          (lambda () (global-set-key (kbd "<tab>") 'org-cycle)))
 
 (setq org-directory "~/Documents/org/"
       org-agenda-files '("~/Documents/org/agenda.org")
@@ -227,13 +250,19 @@ A GNU Emacs major mode for convenient plain text markup — and much more
       ;; Information to record when a task moves to the DONE state
       org-log-done 'time
       ;; Display images on org files: [[~/your/image/path.png]]
-      org-startup-with-inline-images t)
-#+END_SRC
+      org-startup-with-inline-images t
+      ;; Before this drives me insane
+      org-src-tab-acts-natively nil)
+
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c s") 'org-schedule)
+(global-set-key (kbd "C-c d") 'org-deadline)
+#+end_src
 
 * Dashboard
 An extensible emacs startup screen showing you what’s most important.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (use-package dashboard
   :init
   (setq dashboard-center-content t)
@@ -242,13 +271,13 @@ An extensible emacs startup screen showing you what’s most important.
   (setq dashboard-banner-logo-title "An extensible, customizable, free/libre text editor — and more!")
   :config
   (dashboard-setup-startup-hook))
-#+END_SRC
+#+end_src
 
 * Runtime performance
 Dial the GC threshold back down so that garbage collection happens more
 frequently but in less time
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 ;; Make gc pauses faster by decreasing the threshold.
 (setq gc-cons-threshold (* 2 1000 1000))
-#+END_SRC
+#+end_src
