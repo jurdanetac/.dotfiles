@@ -143,13 +143,13 @@ Emacs package that displays available keybindings in popup
 A GNU Emacs major mode for convenient plain text markup — and much more
 
 #+begin_src emacs-lisp
-(use-package org
-  :config
-  (require 'org-tempo)
-  (require 'ob-shell))
+(use-package org)
 
 (unless (package-installed-p 'org-plus-contrib)
   (package-install 'org-plus-contrib))
+
+(require 'org-tempo)
+(require 'ob-shell)
 
 ;; Fix weird bug on first launch
 (org-reload)
@@ -243,7 +243,7 @@ Your life in plain text!
 ;; For any reason tab subtree cycling is not working after upgrading
 ;; `org` to version 9.4.6
 (add-hook 'org-mode-hook
-          (lambda () (global-set-key (kbd "<tab>") 'org-cycle)))
+          (lambda () (local-set-key (kbd "<tab>") 'org-cycle)))
 
 (setq org-directory "~/Documents/org/"
       org-agenda-files '("~/Documents/org/agenda.org")
@@ -258,8 +258,8 @@ Your life in plain text!
       org-src-tab-acts-natively nil)
 
 (global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c s") 'org-schedule)
-(global-set-key (kbd "C-c d") 'org-deadline)
+(local-set-key (kbd "C-c s") 'org-schedule)
+(local-set-key (kbd "C-c d") 'org-deadline)
 #+end_src
 
 * Dashboard
