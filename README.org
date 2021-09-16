@@ -2,37 +2,29 @@
 
 #+html: <p align="center"><img src="tux.png" /></p>
 
-This is the repository where I store all my program's cofigurations I use on
-my GNU/Linux machine on a daily basis!
+This is the repository where I store all my program's cofigurations, which I use
+on my GNU/Linux machine on a daily basis!
 
 * Instructions for usage
 ** Clone this repo on your home (~) folder
 Get a copy of this repo running this command on your shell:
 
 #+begin_src
-cd
-git clone https://github.com/jurdanetac/dotfiles ~/
-#+end_src
-
-If you have your own dotfiles dir (fatal: destination path '/home/user/dotfiles
-already exists and is not an empty directory.):
-
-#+begin_src
-cd
-git clone https://github.com/jurdanetac/dotfiles ~/jurdanetacdots
+git clone https://github.com/jurdanetac/dotfiles ~/dotfiles
 #+end_src
 
 ** Stow (copy) the directory of the config you want
 GNU Stow is an organizer for /usr/local software packages, but can be used for
-other organizing tasks. That's the reason of the long, redundant paths, the
-repo must be clone to your home folder though
+other organizing tasks. That's the reason of the long, redundant paths
 
 #+begin_src
 cd ~/dotfiles
-cp neovim/.config/nvim/init.vim ~/.config/nvim/init.vim
 
-;; stow users ex:
-cd ~/dotfiles
+;; manual setup one-by-one ex.
+;; mkdir -p ~/.config/nvim
+;; cp neovim/.config/nvim/init.vim ~/.config/nvim/init.vim
+
+;; stow one thing:
 stow neovim
 #+end_src
 

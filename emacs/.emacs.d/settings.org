@@ -145,18 +145,19 @@ Emacs package that displays available keybindings in popup
 A GNU Emacs major mode for convenient plain text markup — and much more
 
 #+begin_src emacs-lisp
+;; Group hooks
 (defun my-org-mode-setup ()
   ;; Indent text according to outline structure
   (org-indent-mode)
-  ;; Org Tempo expands snippets to structures defined in
-  ;; org-structure-template-alist and org-tempo-keywords-alist.
-  (require 'org-tempo)
   ;; Tab subtree cycling is not working after upgrading org to v9.4.6, set it:
   (local-set-key (kbd "<tab>") 'org-cycle))
 
 (use-package org
+  :ensure org-plus-contrib
   :hook (org-mode . my-org-mode-setup)
   :config
+
+  ;; General org tweaks
   (setq org-directory "~/Documents/org/"
         org-agenda-files '("~/Documents/org/agenda.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
@@ -169,27 +170,36 @@ A GNU Emacs major mode for convenient plain text markup — and much more
         ;; Before this drives me insane
         org-src-tab-acts-natively nil)
 
-        ;; Agenda shortcuts
-        (global-set-key (kbd "C-c a") 'org-agenda)
-        (local-set-key (kbd "C-c s") 'org-schedule)
-        (local-set-key (kbd "C-c d") 'org-deadline)
+    ;; Expand snippets to structures defined below (C-c, C-,)
+    (setq org-structure-template-alist
+    '(("a" . "export ascii")
+        ("c" . "center")
+        ("C" . "comment")
+        ("e" . "example")
+        ("E" . "export")
+        ("h" . "export html")
+        ("l" . "export latex")
+        ("q" . "quote")
+        ("s" . "src")
+        ("v" . "verse")))
 
-        ;; By default, only Emacs Lisp is enabled for evaluation. To enable or
-        ;; disable languages, customize the org-babel-load-languages variable
+    ;; Agenda shortcuts
+    (global-set-key (kbd "C-c a") 'org-agenda)
+    (local-set-key (kbd "C-c s") 'org-schedule)
+    (local-set-key (kbd "C-c d") 'org-deadline)
 
-        ;; In this example, evaluation is disabled for Emacs Lisp, enabled for R
+    ;; By default, only Emacs Lisp is enabled for evaluation. To enable or
+    ;; disable languages, customize the org-babel-load-languages variable
 
-        ;; (org-babel-do-load-languages
-        ;;  'org-babel-load-languages
-        ;;  '((emacs-lisp . nil)
-        ;;    (R . t)))
-)
+    ;; In this example, evaluation is disabled for Emacs Lisp, enabled for R
 
-(unless (package-installed-p 'org-plus-contrib)
-  (package-install 'org-plus-contrib))
+    ;; (org-babel-do-load-languages
+    ;;  'org-babel-load-languages
+    ;;  '((emacs-lisp . nil)
+    ;;    (R . t)))
 
-;; Fix weird bug on first launch
-;;(org-reload)
+    ;; Error running timer 'org-indent-initialize-agent': (void-function org-time-add)
+    (org-reload))
 #+end_src
 
 ** Helm
@@ -237,6 +247,9 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 
 ;; Keep unwanted files on cache dir not .emacs.d
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/"))
+
+;;What to do if visiting a symbolic link to a file under version control
+(setq vc-follow-symlinks t)
 #+end_src
 
 ** Lines and characters
