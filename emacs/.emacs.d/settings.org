@@ -268,7 +268,7 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 (show-paren-mode 1)
 
 ;; HTML tag completion prompt
-(setq sgml-quick-keys 'close)
+;; (setq sgml-quick-keys 'close)
 #+end_src
 
 ** Shortcuts for +/- zooming
@@ -286,6 +286,15 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 
 ;; Revert buffers when the underlying file has changed
 (global-auto-revert-mode 1)
+#+end_src
+
+** Window resizing
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-s-<left>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-s-<right>") 'shrink-window-horizontally)
+(global-set-key (kbd "C-s-<down>") 'shrink-window)
+(global-set-key (kbd "C-s-<up>") 'enlarge-window)
 #+end_src
 
 * Whitespace
