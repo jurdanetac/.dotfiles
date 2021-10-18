@@ -89,6 +89,8 @@ The extensible vi layer for Emacs and it's "dependencies"
         evil-want-Y-yank-to-eol t
         evil-undo-system 'undo-tree)
   :config
+  ;; Just for convenience
+  (define-key evil-normal-state-map (kbd "C-w C-q") 'delete-window)
   ;; :q should kill the current buffer rather than quitting Emacs entirely
   (evil-ex-define-cmd "q" 'kill-current-buffer)
   ;; Type :quit to close Emacs
@@ -284,13 +286,6 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 ;; (setq sgml-quick-keys 'close)
 #+end_src
 
-** Shortcuts for +/- zooming
-
-#+begin_src emacs-lisp
-(global-set-key (kbd "C-=") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-#+end_src
-
 ** Auto-revert changed files
 
 #+begin_src emacs-lisp
@@ -301,13 +296,18 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 (global-auto-revert-mode 1)
 #+end_src
 
-** Window resizing
+** Display shortcuts
 
 #+begin_src emacs-lisp
-(global-set-key (kbd "C-s-<left>") 'enlarge-window-horizontally)
-(global-set-key (kbd "C-s-<right>") 'shrink-window-horizontally)
-(global-set-key (kbd "C-s-<down>") 'shrink-window)
-(global-set-key (kbd "C-s-<up>") 'enlarge-window)
+;; Shortcuts for +/- zooming
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+
+;; Instead of selecting text with control, use evil's visual mode
+(global-set-key (kbd "C-<up>") 'enlarge-window)
+(global-set-key (kbd "C-<down>") 'shrink-window)
+(global-set-key (kbd "C-<left>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-<right>") 'shrink-window-horizontally)
 #+end_src
 
 * Whitespace
