@@ -93,6 +93,8 @@ The extensible vi layer for Emacs and it's "dependencies"
   (evil-ex-define-cmd "q" 'kill-current-buffer)
   ;; Type :quit to close Emacs
   (evil-ex-define-cmd "quit" 'evil-quit)
+  ;; Just for convenience
+  (evil-ex-define-cmd "W" 'save-buffer)
   (evil-mode 1))
 #+end_src
 
@@ -212,6 +214,14 @@ Emacs incremental completion and selection narrowing framework
   (helm-mode 1))
 #+end_src
 
+** Company
+Modular in-buffer completion framework for Emacs
+
+#+begin_src emacs-lisp
+(use-package company
+  :config (add-hook 'after-init-hook 'global-company-mode))
+#+end_src
+
 ** Theme
 An opinionated pack of modern color-themes, a fancy and fast mode-line
 inspired by minimalism design and pretty icons. (Doom Emacs theme)
@@ -227,7 +237,7 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 #+end_src
 
 * UI Tweaks
-** Disable stuff
+** Toggle stuff
 
 #+begin_src emacs-lisp
 ;; Hide interface tools
@@ -248,6 +258,9 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 
 ;;What to do if visiting a symbolic link to a file under version control
 (setq vc-follow-symlinks t)
+
+;; Major mode for managing a display of directories and tags.
+(global-set-key (kbd "<f8>") 'speedbar)
 #+end_src
 
 ** Lines and characters
@@ -313,6 +326,38 @@ I like the MSWord-like approach of the pilcrow (¶) toggle formatting marks
           (lambda ()
             (unless (eq major-mode 'fundamental-mode)
               (delete-trailing-whitespace))))
+#+end_src
+
+* Line switching
+
+#+begin_src emacs-lisp
+(defun duplicate-line ()
+  (interactive)
+  (save-mark-and-excursion
+    (beginning-of-line)
+    (insert (thing-at-point 'line t))))
+
+(defun move-line-down ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines 1))
+    (forward-line)
+    (move-to-column col)))
+
+(defun move-line-up ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines -1))
+    (forward-line -1)
+    (move-to-column col)))
+
+(global-set-key (kbd "C-S-d") 'duplicate-line)
+(global-set-key (kbd "C-S-j") 'move-line-down)
+(global-set-key (kbd "C-S-k") 'move-line-up)
 #+end_src
 
 * Dashboard
