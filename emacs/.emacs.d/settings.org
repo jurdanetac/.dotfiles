@@ -199,6 +199,15 @@ A GNU Emacs major mode for convenient plain text markup — and much more
     ;;  'org-babel-load-languages
     ;;  '((emacs-lisp . nil)
     ;;    (R . t)))
+    
+    (setq org-babel-python-command "python3")
+
+    (eval-after-load "org"
+      '(org-babel-do-load-languages
+        'org-babel-load-languages
+        '((shell . t)
+          (python . t)
+          (emacs-lisp . t))))
 
     ;; Error running timer 'org-indent-initialize-agent': (void-function org-time-add)
     (org-reload))
