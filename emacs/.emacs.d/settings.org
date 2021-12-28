@@ -1,0 +1,361 @@
+#+TITLE: Personal Emacs configuration
+#+STARTUP: content
+
+* LOAD THESE SETTINGS ON YOUR INIT.EL!
+Using Org mode to tweak Emacs is a great way to organize and highlight parts
+of your custom configuration. Remember to load this org file in your init.el!
+
+#+begin_example
+(require 'org)
+(org-babel-load-file
+ (expand-file-name "settings.org"
+                   user-emacs-directory))
+#+end_example
+
+* STARTUP PERFORMANCE
+Make startup faster by reducing the frequency of garbage collection and then use
+a hook to measure Emacs startup time
+
+#+begin_src emacs-lisp
+;; The default is 800 kilobytes. Measured in bytes.
+(setq gc-cons-threshold (* 50 1000 1000))
+#+end_src
+
+* PROFILE EMACS STARTUP
+Measure how much does Emacs takes on launch
+
+#+begin_src emacs-lisp
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "*** Emacs loaded in %s with %d garbage collections."
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))
+#+end_src
+
+* SOURCES
+MELPA is an ELPA-compatible package repository that contains an enormous
+amount of useful Emacs packages. In contrast to ELPA, Emacs is not configured
+by default to install packages from MELPA. You will have to configure it.
+
+#+begin_src emacs-lisp
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
+;; Update package archives if no past data is found
+(unless package-archive-contents
+  (package-refresh-contents))
+#+end_src
+
+* PACKAGES
+** Use-package
+Use-package declaration for simplifying your .emacs
+
+#+begin_src emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+;; This is only needed once, near the top of the file
+(eval-when-compile
+  (require 'use-package))
+
+;; Ensure all packages are installed on launch
+(setq use-package-always-ensure t)
+#+end_src
+
+** Evil mode
+The extensible vi layer for Emacs and it's "dependencies"
+
+#+begin_src emacs-lisp
+;; Remap universal-argument to allow Evil's `C-u`
+(global-set-key (kbd "C-c u") 'universal-argument)
+;; ESC cancels all
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+;; Required for Evil's `C-r`
+(use-package undo-tree
+  :init (global-undo-tree-mode 1))
+
+(use-package evil
+  :after undo-tree
+  :init
+  (setq evil-want-C-u-scroll t
+        evil-want-integration t
+        evil-want-keybinding nil
+        evil-want-Y-yank-to-eol t
+        evil-split-window-below t
+        evil-vsplit-window-right t
+        evil-undo-system 'undo-tree)
+  :config
+  ;; C-g drops to evil's normal mode too
+  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  ;; M-x easier to press
+  (evil-global-set-key 'normal (kbd "C-p") 'execute-extended-command)
+
+  ;; :q should kill the current buffer rather than quitting Emacs entirely
+  (evil-ex-define-cmd "q" 'kill-current-buffer)
+  ;; Type :quit to close Emacs
+  (evil-ex-define-cmd "quit" 'evil-quit)
+
+  (defun fn/dont-arrow-me-bro ()
+    (interactive)
+    (message "Arrow keys are bad, you know?"))
+
+  ;; Disable arrow keys in normal and visual modes
+  (define-key evil-normal-state-map (kbd "<left>") 'fn/dont-arrow-me-bro)
+  (define-key evil-normal-state-map (kbd "<right>") 'fn/dont-arrow-me-bro)
+  (define-key evil-normal-state-map (kbd "<down>") 'fn/dont-arrow-me-bro)
+  (define-key evil-normal-state-map (kbd "<up>") 'fn/dont-arrow-me-bro)
+  (evil-global-set-key 'motion (kbd "<left>") 'fn/dont-arrow-me-bro)
+  (evil-global-set-key 'motion (kbd "<right>") 'fn/dont-arrow-me-bro)
+  (evil-global-set-key 'motion (kbd "<down>") 'fn/dont-arrow-me-bro)
+  (evil-global-set-key 'motion (kbd "<up>") 'fn/dont-arrow-me-bro)
+
+  (evil-mode 1))
+#+end_src
+
+** Evil collection
+This is a collection of Evil bindings for the parts of Emacs that Evil does not
+cover properly by default, such as help-mode, M-x calendar, Eshell...
+
+#+begin_src emacs-lisp
+(use-package evil-collection
+  :after evil
+  :init
+  (evil-collection-init))
+#+end_src
+
+** Org mode
+A GNU Emacs major mode for convenient plain text markup — and much more
+
+| Typing the below + TAB | Expands to ...                          |
+|------------------------+-----------------------------------------|
+| <a                     | '#+BEGIN_EXPORT ascii' … '#+END_EXPORT  |
+| <c                     | '#+BEGIN_CENTER' … '#+END_CENTER'       |
+| <C                     | '#+BEGIN_COMMENT' … '#+END_COMMENT'     |
+| <e                     | '#+BEGIN_EXAMPLE' … '#+END_EXAMPLE'     |
+| <E                     | '#+BEGIN_EXPORT' … '#+END_EXPORT'       |
+| <h                     | '#+BEGIN_EXPORT html' … '#+END_EXPORT'  |
+| <l                     | '#+BEGIN_EXPORT latex' … '#+END_EXPORT' |
+| <q                     | '#+BEGIN_QUOTE' … '#+END_QUOTE'         |
+| <s                     | '#+BEGIN_SRC' … '#+END_SRC'             |
+| <v                     | '#+BEGIN_VERSE' … '#+END_VERSE'         |
+
+#+begin_src emacs-lisp
+(use-package org-tempo
+  ;; Tell use-package not to try to install org-tempo since it's already there
+  :ensure nil)
+
+(use-package org
+  ;; Tell use-package not to try to install org since it's already there
+  :ensure nil
+  :config
+  (setq org-src-preserve-indentation t))
+#+end_src
+
+** Magit
+It's Magit! A Git porcelain inside Emacs
+
+#+begin_src emacs-lisp
+(use-package magit)
+#+end_src
+
+** Theme
+An opinionated pack of modern color-themes, a fancy and fast mode-line
+inspired by minimalism design and pretty icons. (Doom Emacs theme)
+
+#+begin_src emacs-lisp
+(use-package doom-themes
+  :config
+  ;; If nil, bold/italic is universally disabled
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (load-theme 'doom-one t))
+
+(use-package doom-modeline
+  :after doom-themes
+  :init (doom-modeline-mode 1))
+
+(use-package all-the-icons
+  :after doom-modeline)
+#+end_src
+
+* UI TWEAKS
+** Toggle stuff
+
+#+begin_src emacs-lisp
+;; Hide interface tools
+(setq inhibit-startup-screen t)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; Disable all alarms, sound is annoying and visual bell hangs the screen for a
+;; while when top/bottom is reached with mouse scrolling
+(setq ring-bell-function 'ignore)
+#+end_src
+
+** Buffers, lines, characters and whitespace
+
+#+begin_src emacs-lisp
+;; Avoid surprises with the coding system
+(set-default-coding-systems 'utf-8)
+
+;; Display line numbers and truncate long lines
+(global-display-line-numbers-mode 1)
+(global-visual-line-mode t)
+
+;; Enable hide-show minor mode globally for vim-like line folding
+;; (add-hook 'prog-mode-hook #'hs-minor-mode)
+
+;; Display matching pairs of ()[]{} without delay
+(setq show-paren-delay 0)
+(show-paren-mode 1)
+
+;; Revert Dired and other buffers
+(setq global-auto-revert-non-file-buffers t)
+
+;; Revert buffers when the underlying file has changed
+(global-auto-revert-mode 1)
+
+;; Use spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;; Highlight whitespace and after-80 columns,
+;; I like the MSWord-like approach of the pilcrow (¶) toggle formatting marks
+(setq whitespace-style '(face trailing space-mark tab-mark lines-tail))
+(global-whitespace-mode t)
+
+;; Delete trailing whitespace on save
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
+#+end_src
+
+** Font face
+
+#+begin_src emacs-lisp
+(set-frame-font "JetBrains Mono 11" nil t)
+
+;; Makes commented text and keywords italics.
+;; Your font must have an italic face available.
+(set-face-attribute 'font-lock-comment-face nil
+  :slant 'italic)
+(set-face-attribute 'font-lock-keyword-face nil
+  :slant 'italic)
+
+;; Needed if using emacsclient.
+(add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
+#+end_src
+
+** Display shortcuts
+
+#+begin_src emacs-lisp
+;; Shortcuts for +/- zooming
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+
+;; Instead of selecting text with control, use evil's visual mode
+(global-set-key (kbd "C-<up>") 'enlarge-window)
+(global-set-key (kbd "C-<down>") 'shrink-window)
+(global-set-key (kbd "C-<left>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-<right>") 'shrink-window-horizontally)
+#+end_src
+
+** Backup files handling
+
+#+begin_src emacs-lisp
+(defvar --backup-directory (concat user-emacs-directory "backups"))
+(if (not (file-exists-p --backup-directory))
+        (make-directory --backup-directory t))
+
+(setq backup-directory-alist `(("." . ,--backup-directory)))
+; Backup of a file the first time it is saved.
+(setq make-backup-files t
+      ; Don't clobber symlinks
+      backup-by-copying t
+      ; Version numbers for backup files
+      version-control t
+      ; Delete excess backup files silently
+      delete-old-versions t
+      delete-by-moving-to-trash t
+      ; Oldest versions to keep when a new numbered backup is made (default: 2)
+      kept-old-versions 6
+      ; Newest versions to keep when a new numbered backup is made (default: 2)
+      kept-new-versions 9
+      ; Auto-save every buffer that visits a file
+      auto-save-default t
+      ; Number of seconds idle time before auto-save (default: 30)
+      auto-save-timeout 20
+      ; Number of keystrokes between auto-saves (default: 300)
+      auto-save-interval 200)
+#+end_src
+
+* LINE SWITCHING
+
+#+begin_src emacs-lisp
+(defun duplicate-line ()
+  (interactive)
+  (save-mark-and-excursion
+    (beginning-of-line)
+    (insert (thing-at-point 'line t))))
+
+(defun move-line-down ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines 1))
+    (forward-line)
+    (move-to-column col)))
+
+(defun move-line-up ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines -1))
+    (forward-line -1)
+    (move-to-column col)))
+
+(global-set-key (kbd "C-S-d") 'duplicate-line)
+(global-set-key (kbd "C-S-j") 'move-line-down)
+(global-set-key (kbd "C-S-k") 'move-line-up)
+#+end_src
+
+* DASHBOARD
+An extensible emacs startup screen showing you what’s most important.
+
+#+begin_src emacs-lisp
+(use-package dashboard
+  :init
+  (setq dashboard-center-content t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-startup-banner "~/.emacs.d/banners/oldlogo.png")
+  (setq dashboard-banner-logo-title "An extensible, customizable, free/libre text editor — and more!")
+  :config
+  ;; This setting ensures that emacsclient always opens on *dashboard* rather than *scratch*
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+  (dashboard-setup-startup-hook))
+#+end_src
+
+* EMACS DAEMON
+Allow access from emacsclient
+
+#+begin_src emacs-lisp
+(add-hook 'after-init-hook
+          (lambda ()
+            (require 'server)
+            (unless (server-running-p)
+              (server-start))))
+#+end_src
+
+* RUNTIME PERFORMANCE
+Dial the GC threshold back down so that garbage collection happens more
+frequently but in less time
+
+#+begin_src emacs-lisp
+;; Make gc pauses faster by decreasing the threshold.
+(setq gc-cons-threshold (* 2 1000 1000))
+#+end_src
