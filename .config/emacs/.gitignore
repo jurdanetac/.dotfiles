@@ -1,0 +1,10 @@
+# host-specific directories
+org/
+elpa/
+backups/
+transient/
+auto-save-list/
+
+recentf
+init.el
+settings.el
