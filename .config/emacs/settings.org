@@ -224,6 +224,10 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 ;; Disable all alarms, sound is annoying and visual bell hangs the screen for a
 ;; while when top/bottom is reached with mouse scrolling
 (setq ring-bell-function 'ignore)
+
+;; Don't consider case significant for buffer/file-name completion
+(setq read-file-name-completion-ignore-case t)
+(setq read-buffer-completion-ignore-case t)
 #+end_src
 
 ** Buffers, lines, characters and whitespace
