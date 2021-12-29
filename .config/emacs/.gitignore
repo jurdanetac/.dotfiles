@@ -1,10 +1,11 @@
-# host-specific directories
+# host-specific directories/files
 org/
 elpa/
 backups/
 transient/
 auto-save-list/
 
+bookmarks
 recentf
 init.el
 settings.el
