@@ -242,9 +242,6 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode t)
 
-;; Enable hide-show minor mode globally for vim-like line folding
-;; (add-hook 'prog-mode-hook #'hs-minor-mode)
-
 ;; Display matching pairs of ()[]{} without delay
 (setq show-paren-delay 0)
 (show-paren-mode 1)
@@ -269,6 +266,17 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 
 ;; Replace list-buffers with the more advanced ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; Web programming indent setup
+(add-hook 'html-mode-hook
+  (lambda ()
+    (setq-local sgml-basic-offset 2)))
+(add-hook 'css-mode-hook
+  (lambda ()
+    (setq-local css-indent-offset 2)))
+(add-hook 'js-mode-hook
+  (lambda ()
+    (setq-local js-indent-level 2)))
 
 (defun kill-all-buffers ()
   "Kill all buffers"
