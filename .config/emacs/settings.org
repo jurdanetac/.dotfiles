@@ -98,6 +98,8 @@ The extensible vi layer for Emacs and it's "dependencies"
   (evil-ex-define-cmd "q" 'kill-current-buffer)
   ;; Type :quit to close Emacs
   (evil-ex-define-cmd "quit" 'evil-quit)
+  ;; Avoid having to re-type save command
+  (evil-ex-define-cmd "W" 'save-buffer)
 
   (defun fn/dont-arrow-me-bro ()
     (interactive)
