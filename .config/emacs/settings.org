@@ -52,6 +52,7 @@ by default to install packages from MELPA. You will have to configure it.
 * PACKAGES
 ** Use-package
 Use-package declaration for simplifying your .emacs
+https://melpa.org/#/use-package
 
 #+begin_src emacs-lisp
 (unless (package-installed-p 'use-package)
@@ -67,6 +68,7 @@ Use-package declaration for simplifying your .emacs
 
 ** Evil mode
 The extensible vi layer for Emacs and it's "dependencies"
+https://melpa.org/#/evil
 
 #+begin_src emacs-lisp
 ;; Remap universal-argument to allow Evil's `C-u`
@@ -121,6 +123,7 @@ The extensible vi layer for Emacs and it's "dependencies"
 ** Evil collection
 This is a collection of Evil bindings for the parts of Emacs that Evil does not
 cover properly by default, such as help-mode, M-x calendar, Eshell...
+https://melpa.org/#/evil-collection
 
 #+begin_src emacs-lisp
 (use-package evil-collection
@@ -158,6 +161,7 @@ A GNU Emacs major mode for convenient plain text markup — and much more
 
 ** Disable Mouse
 Disable the mouse in Emacs
+https://melpa.org/#/disable-mouse
 
 #+begin_src emacs-lisp
 (use-package disable-mouse
@@ -172,6 +176,7 @@ Disable the mouse in Emacs
 
 ** Magit
 It's Magit! A Git porcelain inside Emacs
+https://melpa.org/#/magit
 
 #+begin_src emacs-lisp
 (use-package magit)
@@ -179,6 +184,7 @@ It's Magit! A Git porcelain inside Emacs
 
 ** Dashboard
 An extensible emacs startup screen showing you what’s most important
+https://melpa.org/#/dashboard
 
 #+begin_src emacs-lisp
 (use-package dashboard
@@ -196,6 +202,7 @@ An extensible emacs startup screen showing you what’s most important
 ** Theme
 An opinionated pack of modern color-themes, a fancy and fast mode-line
 inspired by minimalism design and pretty icons. (Doom Emacs theme)
+https://melpa.org/#/doom-themes
 
 #+begin_src emacs-lisp
 (use-package doom-themes
