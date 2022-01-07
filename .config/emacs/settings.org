@@ -238,9 +238,10 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 ;; Avoid surprises with the coding system
 (set-default-coding-systems 'utf-8)
 
-;; Display line numbers and truncate long lines
+;; Display line numbers
 (global-display-line-numbers-mode 1)
-(global-visual-line-mode t)
+;; Toggle for line-truncating
+(global-set-key (kbd "C-c t") 'toggle-truncate-lines)
 
 ;; Display matching pairs of ()[]{} without delay
 (setq show-paren-delay 0)
