@@ -268,25 +268,24 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; Web programming indent setup
-(add-hook 'html-mode-hook
-  (lambda ()
-    (setq-local sgml-basic-offset 2)))
-(add-hook 'css-mode-hook
-  (lambda ()
-    (setq-local css-indent-offset 2)))
-(add-hook 'js-mode-hook
-  (lambda ()
-    (setq-local js-indent-level 2)))
+(add-hook 'html-mode-hook (lambda () (setq-local sgml-basic-offset 2)))
+(add-hook 'css-mode-hook (lambda () (setq-local css-indent-offset 2)))
+(add-hook 'js-mode-hook (lambda () (setq-local js-indent-level 2)))
 
 (defun kill-all-buffers ()
   "Kill all buffers"
   (interactive)
-  (mapc 'kill-buffer (buffer-list)))
+  (if (yes-or-no-p "Do you really want to kill all buffers? ")
+      (mapc 'kill-buffer (buffer-list))))
 
 (defun kill-other-buffers ()
   "Kill all other buffers"
   (interactive)
-  (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
+  (if (yes-or-no-p "Do you really want to kill all other buffers? ")
+      (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))))
+
+(global-set-key (kbd "C-c a") 'kill-all-buffers)
+(global-set-key (kbd "C-c o") 'kill-other-buffers)
 #+end_src
 
 ** Font face
