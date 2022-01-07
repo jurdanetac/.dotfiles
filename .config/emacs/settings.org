@@ -223,6 +223,9 @@ inspired by minimalism design and pretty icons. (Doom Emacs theme)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; Maximize all frames by default, works on emacsclient too
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; Disable all alarms, sound is annoying and visual bell hangs the screen for a
 ;; while when top/bottom is reached with mouse scrolling
 (setq ring-bell-function 'ignore)
