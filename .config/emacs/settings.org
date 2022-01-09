@@ -250,6 +250,9 @@ https://melpa.org/#/doom-themes
 
 ;; Display line numbers
 (global-display-line-numbers-mode 1)
+;; Non-nil means do not display continuation lines.
+;; Instead, give each line of text just one screen line
+(setq-default truncate-lines t)
 ;; Toggle for line-truncating
 (global-set-key (kbd "C-c t") 'toggle-truncate-lines)
 
