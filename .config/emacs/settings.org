@@ -240,6 +240,11 @@ https://melpa.org/#/doom-themes
 ;; Don't consider case significant for buffer/file-name completion
 (setq read-file-name-completion-ignore-case t)
 (setq read-buffer-completion-ignore-case t)
+
+;; Prevent emacs from contaminating system's clipboard
+(setq select-enable-clipboard nil)
+;; Use primary selection to paste (last stretch of text selected in X)
+(setq select-enable-primary t)
 #+end_src
 
 ** Buffers, lines, characters and whitespace
