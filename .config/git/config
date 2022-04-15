@@ -1,0 +1,12 @@
+[user]
+	name = Juan Urdaneta
+	email = jurdanetac10@gmail.com
+[core]
+	editor = /usr/bin/nvim
+[init]
+	defaultBranch = master
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
