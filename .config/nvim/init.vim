@@ -19,3 +19,10 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Clear highlight on pressing Esc
 nnoremap <silent> <Esc> :noh<CR>:echo<CR>
+
+" Disable language providers
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_node_provider = 0
+let g:loaded_python_provider = 0
+let g:loaded_python3_provider = 0
