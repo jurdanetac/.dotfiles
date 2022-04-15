@@ -1,4 +1,3 @@
-set clipboard+=unnamedplus    " Always use the clipboard for all operations
 set expandtab                 " Use spaces to insert a <Tab>
 set ignorecase                " Ignore case in search patterns
 set laststatus=0              " Always hide status line
