@@ -21,6 +21,8 @@ nnoremap <silent> <Esc> :noh<CR>:echo<CR>
 
 " Make :W save too
 command! W write
+" Make :Q quit too
+command! Q quit
 
 " Disable language providers
 let g:loaded_ruby_provider = 0
