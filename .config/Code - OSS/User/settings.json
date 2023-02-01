@@ -33,4 +33,23 @@
     },
     "eslint.run": "onSave",
     "files.autoSave": "afterDelay",
+    
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "**/node_modules": true,
+      "**/package-lock.json": true,
+      "**/*.js": { "when": "$(basename).ts"},
+    },
+    "git.enabled": false,
+    "workbench.activityBar.visible": false,
+    "window.zoomLevel": 1,
+    "workbench.colorCustomizations": {
+      "statusBar.background" : "#1A1A1A",
+      "statusBar.noFolderBackground" : "#212121",
+      "statusBar.debuggingBackground": "#263238"
 }
