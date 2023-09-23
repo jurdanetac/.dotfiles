@@ -1,0 +1,14 @@
+export ZDOTDIR="$HOME/.config/zsh"
+
+export PATH="$PATH:/home/jd/.local/bin"
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+# Default programs:
+export EDITOR="nvim"
+export TERMINAL="foot"
+export BROWSER="chromium"
+
+# ~/ Clean-up:
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"

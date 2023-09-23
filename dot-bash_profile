@@ -1,0 +1,10 @@
+#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+# Created by `pipx` on 2023-07-04 23:00:46
+export PATH="$PATH:/home/jd/.local/bin"

@@ -1,0 +1,6 @@
+@import url("/etc/xdg/waybar/style.css");
+
+* {
+    font-family: 'JetBrains Mono';
+    font-weight: bold;
+}

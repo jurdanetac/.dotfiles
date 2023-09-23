@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# Colorize commands when possible.
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ip="ip -color=auto"
+
+# Use eza for ls if present.
+[ -x "$(command -v eza)" ] && alias ls="eza -lah --color=auto"
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+    mkd="mkdir -pv" \
+    stow="stow -v" \
+
+alias \
+    vi="nvim" \
+    cls="clear" \
+    cat="bat --theme gruvbox-dark --style plain" \
+    pak="pulseaudio -k" \
