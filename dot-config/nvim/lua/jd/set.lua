@@ -12,9 +12,11 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.swapfile = true
+vim.opt.backup = true
+vim.opt.backupdir = os.getenv("HOME") .. "/.cache/nvim/backups"
+vim.opt.directory = os.getenv("HOME") .. "/.cache/nvim/swapfiles"
+vim.opt.undodir = os.getenv("HOME") .. "/.cache/nvim/undodir"
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
