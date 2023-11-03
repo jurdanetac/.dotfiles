@@ -1,0 +1,10 @@
+{
+       output eDP-1 enable mode 1366x768@59.998 position 0,0
+       exec swaymsg workspace 2, move workspace to eDP-1
+}
+
+{
+       output "Samsung Display Corp. 0x4852 Unknown" enable mode 1366x768@59.998 position 1366,0
+       output "LG Electronics 2D HD LG TV Unknown" mode 1366x768@59.790 position 0,0
+       exec swaymsg workspace 2, move workspace to HDMI-A-1
+}
