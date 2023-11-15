@@ -1,52 +1,9 @@
 /* @import url("/etc/xdg/waybar/style.css"); */
 
-/* =============================================================================
- *
- * Waybar configuration
- *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
- * =========================================================================== */
-
-/* -----------------------------------------------------------------------------
- * Keyframes
- * -------------------------------------------------------------------------- */
-
-
-/*
-Polar Night
-nord0  #2e3440
-nord1  #3b4252
-nord2  #434c5e
-nord3  #4c566a
-Snow Storm
-nord4  #d8dee9
-nord5  #e5e9f0
-nord6  #eceff4
-Frost
-nord7  #8fbcbb
-nord8  #88c0d0
-nord9  #81a1c1
-nord10 #5e81ac
-Aurora
-nord11 #bf616a
-nord12 #d08770
-nord13 #ebcb8b
-nord14 #a3be8c
-nord15 #b48ead
-*/
-
-/* -----------------------------------------------------------------------------
- * Base styles
- * -------------------------------------------------------------------------- */
-
-/* Reset all styles */
-
 * {
-    color: #eceff4;
-    background-color: #282828;
     border: 0;
     border-radius: 0;
+    color: #ebdbb2;
     padding: 0 0;
     font-family: 'JetBrains Mono';
     font-weight: bold;
@@ -57,13 +14,13 @@ nord15 #b48ead
    }
 
 window#waybar {
-    background:#2e3440;
+    background-color: #282828;
 }
 
 #workspaces button {
     /* padding: 2px 0px; */
+    margin: 0 2px;
     border-bottom: 2px;
-    color: #eceff4;
     border-color: #d8dee9;
     border-style: solid;
     /* margin-top:2px; */
@@ -82,7 +39,7 @@ window#waybar {
 }
 
 #custom-uptime {
-    margin: 0 50px;
+    margin: 0 30px;
 }
 
 #clock, #battery, #cpu, #memory,#idle_inhibitor, #temperature,#custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #tray, #window,#custom-launcher,#custom-power,#custom-pacman, #custom-network_traffic {
@@ -97,11 +54,11 @@ window#waybar {
 
 
 #clock {
- color:#a3be8c;
+    color: #b16286;
 }
 
 #backlight {
-    color: #ebcb8b;
+    color: #d79921;
 }
 
 #battery {
@@ -150,12 +107,12 @@ window#waybar {
 }
 
 #pulseaudio {
-    color: #b48ead;
+    color: #458588;
 }
 
-#pulseaudio.muted {
+/*#pulseaudio.muted {
     color: #3b4252;
-}
+}*/
 
 #temperature {
     color: #8fbcbb;
@@ -165,19 +122,21 @@ window#waybar {
     color: #bf616a;
 }
 
-#idle_inhibitor {
-   color: #ebcb8b;
+#idle_inhibitor.activated {
+   color: #98971a;
+}
+#idle_inhibitor.deactivated {
+   color: #fe8019;
 }
 
-/*
 #tray {
+   color: #689d6a;
 }
 
 #custom-launcher,#custom-power{
     border-style: hidden;
     margin-top:2px;
 }
-*/
 
 #window{
     border-style: hidden;
