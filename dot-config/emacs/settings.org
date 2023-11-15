@@ -180,7 +180,7 @@ by default to install packages from MELPA. You will have to configure it.
 * BACKUP FILES HANDLING
 
 #+begin_src emacs-lisp
-(setq backup-directory-alist `(("." . "~/.saves")))
+(setq backup-directory-alist `(("." . "~/.config/emacs/saves")))
 (setq backup-by-copying t)
 (setq delete-old-versions t
   kept-new-versions 6
