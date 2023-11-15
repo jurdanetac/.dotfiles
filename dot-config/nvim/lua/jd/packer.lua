@@ -7,14 +7,20 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- Neovim plugin for GitHub Copilot
+    use 'github/copilot.vim'
+
+    -- Retro groove colorscheme for Vim
     use {
         'morhetz/gruvbox',
         as = 'gruvbox',
         config = function()
+            -- set colorscheme on load
             vim.cmd('colorscheme gruvbox')
         end
     }
 
+    -- A light and configurable statusline/tabline plugin for Vim
     use {
         'itchyny/lightline.vim',
         config = function()
@@ -24,6 +30,8 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- Collection of functions that will help you setup Neovim's LSP client,
+    -- so you can get IDE-like features with minimum effort.
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -38,5 +46,13 @@ return require('packer').startup(function(use)
             {'hrsh7th/cmp-nvim-lsp'}, -- Required
             {'L3MON4D3/LuaSnip'},     -- Required
         }
+    }
+
+    -- Git wrapper
+    use {
+        'tpope/vim-fugitive',
+        config = function ()
+            vim.keymap.set("n", "<leader>g", ":Git <CR>", { noremap = true })
+        end
     }
 end)
