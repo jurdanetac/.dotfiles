@@ -11,6 +11,7 @@
 - **Terminal emulator**: Foot 👣
 - **Terminal prompt**: Starship 💫
 - **Text editor**: Neovim & GNU/Emacs 📝
+- **Colorscheme**: Gruvbox 🖌️
 
 *and more!*
 
