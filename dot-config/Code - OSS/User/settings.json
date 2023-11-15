@@ -27,13 +27,15 @@
 
     "vim.useCtrlKeys": true,
     "git.enableSmartCommit": true,
-    "window.zoomLevel": -1,
     "eslint.codeAction.showDocumentation": {
       "enable": false
     },
     "eslint.run": "onSave",
+    "editor.minimap.enabled": false,
+    "editor.codeLens": false,
+    "eslint.alwaysShowStatus": true,
     "files.autoSave": "afterDelay",
-    
+
     "files.exclude": {
       "**/.git": true,
       "**/.svn": true,
@@ -46,10 +48,11 @@
       "**/*.js": { "when": "$(basename).ts"},
     },
     "git.enabled": false,
-    "workbench.activityBar.visible": false,
-    "window.zoomLevel": 1,
     "workbench.colorCustomizations": {
       "statusBar.background" : "#1A1A1A",
       "statusBar.noFolderBackground" : "#212121",
       "statusBar.debuggingBackground": "#263238"
+  },
+  "window.zoomLevel": 1,
+  // "workbench.activityBar.location": "hidden"
 }
