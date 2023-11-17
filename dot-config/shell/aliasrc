@@ -21,8 +21,10 @@ alias \
     mkd="mkdir -pv" \
     stow="stow -v" \
 
+# Custom alias
 alias \
     vi="nvim" \
     cls="clear" \
     cat="bat --theme gruvbox-dark --style plain" \
     pak="pulseaudio -k" \
+    pdf="soffice --convert-to pdf" \
