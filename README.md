@@ -8,6 +8,7 @@
 - **WM**: Sway 🌱
 - **Bar**: Waybar 🎉
 - **Shell**: Zsh ⌨️
+- **Launcher**: Rofi 🚀
 - **Terminal emulator**: Foot 👣
 - **Terminal prompt**: Starship 💫
 - **Text editor**: Neovim & GNU/Emacs 📝
