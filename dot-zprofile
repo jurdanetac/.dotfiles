@@ -15,5 +15,10 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # Start SwayWM automatically on tty login
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec sway
+    # https://www.reddit.com/r/archlinux/comments/2769y8/java_swing_font_rendering/
+    export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+    # https://github.com/swaywm/sway/issues/595
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    export XDG_CURRENT_DESKTOP=sway
+    exec sway
 fi
