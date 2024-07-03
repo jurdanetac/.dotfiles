@@ -12,6 +12,7 @@
 - 👣 **Terminal emulator**: [Foot](dot-config/foot)
 - ✏️ **Text editor**: [Neovim](dot-config/nvim), [GNU/Emacs](dot-config/emacs) & [Doom Emacs](dot-config/doom)
 - 🎨 **Colorscheme**: [Gruvbox](https://github.com/morhetz/gruvbox)
+    - GRUB: [Tartarus](https://github.com/AllJavi/tartarus-grub)
     - GTK4: [Gruvbox GTK Theme](https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme)
     - GTK3: [gruvbox-material-gtk](https://github.com/TheGreatMcPain/gruvbox-material-gtk)
     - Chrome: [gruvbox-slate](https://chromewebstore.google.com/detail/gruvbox-slate/giokfhncgfjkoamdbhfhfhgpikaioccc)
