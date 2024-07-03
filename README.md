@@ -32,4 +32,4 @@ TODO. Use GNU/Stow
 
 ## Take a look!
 
-<img src="images/desktop.png">
+<img src="desktop.png">
