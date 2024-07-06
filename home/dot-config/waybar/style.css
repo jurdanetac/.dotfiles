@@ -1,12 +1,11 @@
 /* Keyframes */
 
 @keyframes blink-critical {
-	to {
-		/*color: @white;*/
-		background-color: @critical;
-	}
+  to {
+    /*color: @white;*/
+    background-color: @critical;
+  }
 }
-
 
 /* Styles */
 
@@ -29,7 +28,6 @@
 @define-color white	#ebdbb2;
 @define-color bg2	#504945;
 
-
 @define-color warning 	@bryellow;
 @define-color critical	@red;
 @define-color mode	@black;
@@ -49,23 +47,25 @@
 
 /* Reset all styles */
 * {
-	border: none;
-	border-radius: 0;
-	min-height: 0;
-	margin: 0;
-	padding: 0;
-	box-shadow: none;
-	text-shadow: none;
-	icon-shadow: none;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  text-shadow: none;
+  icon-shadow: none;
 }
 
 /* The whole bar */
 #waybar {
-	background: rgba(40, 40, 40, 0.8784313725); /* #282828e0 */
-	color: @white;
-	font-family: JetBrains Mono, Siji;
-	font-size: 13pt;
-	font-weight: bold;
+  background: rgba(40, 40, 40, 0.8784313725); /* #282828e0 */
+  color: @white;
+  font-family:
+    JetBrains Mono,
+    Siji;
+  font-size: 13pt;
+  font-weight: bold;
 }
 
 /* Each module */
@@ -84,8 +84,8 @@
 #disk,
 #user,
 #mpris {
-	padding-left: 8pt;
-	padding-right: 8pt;
+  padding-left: 8pt;
+  padding-right: 8pt;
 }
 
 /* Each critical module */
@@ -94,11 +94,11 @@
 #cpu.critical,
 #temperature.critical,
 #battery.critical.discharging {
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-	animation-name: blink-critical;
-	animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-name: blink-critical;
+  animation-duration: 1s;
 }
 
 /* Each warning */
@@ -107,160 +107,160 @@
 #cpu.warning,
 #temperature.warning,
 #battery.warning.discharging {
-	color: @warning;
+  color: @warning;
 }
 
 /* And now modules themselves in their respective order */
 
 /* Current sway mode (resize etc) */
 #mode {
-	color: @white;
-	background: @mode;
+  color: @white;
+  background: @mode;
 }
 
 /* Workspaces stuff */
 #workspaces button,
 #custom-uptime {
-	padding-left: 2pt;
-	padding-right: 2pt;
-	color: @white;
-	background: @unfocused;
+  padding-left: 2pt;
+  padding-right: 2pt;
+  color: @white;
+  background: @unfocused;
 }
 
 #custom-uptime {
-	padding-right: 5pt;
+  padding-right: 5pt;
 }
 
 /* Inactive (on unfocused output) */
 #workspaces button.visible {
-	color: @white;
-	background: @inactive;
+  color: @white;
+  background: @inactive;
 }
 
 /* Active (on focused output) */
 #workspaces button.focused {
-	color: @black;
-	background: @focused;
+  color: @black;
+  background: @focused;
 }
 
 /* Contains an urgent window */
 #workspaces button.urgent {
-	color: @black;
-	background: @warning;
+  color: @black;
+  background: @warning;
 }
 
 /* Style when cursor is on the button */
 #workspaces button:hover {
-	background: @black;
-	color: @white;
+  background: @black;
+  color: @white;
 }
 
 #window {
-	margin-right: 35pt;
-	margin-left: 10pt;
+  margin-right: 35pt;
+  margin-left: 10pt;
 }
 
 #custom-media {
-	background: @custom-media;
-	color: @white;
-	padding-left: 5pt;
+  background: @custom-media;
+  color: @white;
+  padding-left: 5pt;
 }
 
 #pulseaudio {
-	background: @sound;
-	color: @white;
+  background: @sound;
+  color: @white;
 }
 
 #network {
-	background: @network;
-	color: @white;
+  background: @network;
+  color: @white;
 }
 
 #memory {
-	background: @memory;
-	color: @black;
+  background: @memory;
+  color: @black;
 }
 
 #cpu {
-	background: @cpu;
-	color: @white;
+  background: @cpu;
+  color: @white;
 }
 
 #temperature {
-	background: @temp;
-	color: @black;
+  background: @temp;
+  color: @black;
 }
 
 #language {
-	background: @layout;
-	color: @black;
+  background: @layout;
+  color: @black;
 }
 
 #battery {
-	background: @battery;
-	color: @white;
+  background: @battery;
+  color: @white;
 }
 
 #tray {
-	background: @layout;
+  background: @layout;
 }
 
 #clock.date {
-	background: @date;
-	color: @white;
+  background: @date;
+  color: @white;
 }
 
 #clock.time {
-	background: @time;
-	color: @black;
+  background: @time;
+  color: @black;
 }
 
 #custom-arrow1 {
-	font-size: 11pt;
-	color: @time;
-	background: @date;
+  font-size: 11pt;
+  color: @time;
+  background: @date;
 }
 
 #custom-arrow2 {
-	font-size: 11pt;
-	color: @date;
-	background: @layout;
+  font-size: 11pt;
+  color: @date;
+  background: @layout;
 }
 
 #custom-arrow3 {
-	font-size: 11pt;
-	color: @layout;
-	background: @cpu;
+  font-size: 11pt;
+  color: @layout;
+  background: @cpu;
 }
 
 #custom-arrow4 {
-	font-size: 11pt;
-	color: @cpu;
-	background: @network;
+  font-size: 11pt;
+  color: @cpu;
+  background: @network;
 }
 
 #custom-arrow5 {
-	font-size: 11pt;
-	color: @network;
-	background: @sound;
+  font-size: 11pt;
+  color: @network;
+  background: @sound;
 }
 
 #custom-arrow6 {
-	font-size: 11pt;
-	color: @sound;
-	background: @custom-media;
+  font-size: 11pt;
+  color: @sound;
+  background: @custom-media;
 }
 
 #custom-arrow7 {
-	font-size: 11pt;
-	color: @custom-media;
-	background: transparent;
+  font-size: 11pt;
+  color: @custom-media;
+  background: transparent;
 }
 
 #custom-arrow8 {
-	font-size: 11pt;
-	color: @unfocused;
-	background: @transparent;
+  font-size: 11pt;
+  color: @unfocused;
+  background: @transparent;
 }
 
 /*
