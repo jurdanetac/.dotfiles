@@ -5,20 +5,40 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Make bash history endless, with timestamps
-export HISTCONTROL=ignoredups:erasedups
-export HISTFILESIZE=
-export HISTSIZE=
-export HISTTIMEFORMAT="[%F %T] "
+alias ls='ls --color=auto'
+# PS1='[\u@\h \W]\$ '
 
-# Luke Smith's prompt style
+alias vi='nvim'
+alias pdf='soffice --convert-to pdf'
+alias ls='exa -lah --color=auto'
+alias cfv='nvim ~/.config/nvim/init.vim'
+alias cfb='nvim ~/.bashrc'
+alias bkpsys='sudo rsync -aAXH --info=progress2 --no-inc-recursive --delete --one-file-system --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","/home","/swapfile","/home/*/.gvfs"} / /home/jd/Backups/bkp'
+alias rmbkpsys='sudo rm -rf /home/jd/Backups/bkp/*'
+alias wiki='firefox /usr/share/doc/arch-wiki/html/en/Table_of_contents.html'
+alias pak='pulseaudio -k'
+alias less='less -FX'
+alias remacs='systemctl --user restart emacs'
+alias semacs='systemctl --user status emacs'
+alias cat='bat'
+alias shebang='echo "#!/usr/bin/env bash"'
+alias audio-hdmi='pacmd set-card-profile alsa_card.pci-0000_00_14.2 off && pacmd set-card-profile alsa_card.pci-0000_00_01.1 output:hdmi-stereo'
+alias audio-laptop='pacmd set-card-profile alsa_card.pci-0000_00_01.1 off && pacmd set-card-profile alsa_card.pci-0000_00_14.2 output:analog-stereo'
+
+alias uncat='alias cat="cat"'
+
 PS1='\[\e[1;31m\][\[\e[1;33m\]\u\[\e[1;32m\]@\[\e[1;34m\]\h \[\e[1;35m\]\w\[\e[1;31m\]]\[\e[1;00m\]\$\[\e[0;00m\] '
 
-# Vi mode
-set -o vi
+# export HISTCONTROL=ignoredups
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export HISTCONTROL=ignoredups:erasedups
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t -a ''"
+export VISUAL="emacsclient -c -a emacs"
 
-# Load aliases
-[ -f "$HOME/.config/shell/aliasrc" ] && source "$HOME/.config/shell/aliasrc"
+### SET VI MODE ###
+# Comment this line out to enable default emacs-like bindings
+set -o vi
 
 # Created by `pipx` on 2023-07-04 23:00:46
 export PATH="$PATH:/home/jd/.local/bin"
