@@ -11,6 +11,7 @@
 - 🚀 **Launcher**: [Rofi](dot-config/rofi)
 - 👣 **Terminal emulator**: [Foot](dot-config/foot)
 - ✏️ **Text editor**: [Neovim](dot-config/nvim), [GNU/Emacs](dot-config/emacs) & [Doom Emacs](dot-config/doom)
+- 🌒 **Color temperature**: [Gammastep](dot-config/gammastep)
 - 🎨 **Colorscheme**: [Gruvbox](https://github.com/morhetz/gruvbox)
     - GRUB: [Tartarus](https://github.com/AllJavi/tartarus-grub)
     - GTK4: [Gruvbox GTK Theme](https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme)
