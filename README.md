@@ -3,7 +3,10 @@
 <p align="center"><i>my personal configuration files for GNU/Linux workstations!</i></p>
 
 # Setup
-TODO. Use GNU/Stow
+`cd` \
+`git clone https://github.com/jurdanetac/.dotfiles/` \
+`cd .dotfiles` \
+`stow --dotfiles home`
 
 <hr>
 
