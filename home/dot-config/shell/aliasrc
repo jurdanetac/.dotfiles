@@ -28,3 +28,5 @@ alias \
     cat="bat --theme gruvbox-dark --style plain" \
     pak="pulseaudio -k" \
     pdf="soffice --convert-to pdf" \
+
+alias sudo="sudo -v; sudo "
