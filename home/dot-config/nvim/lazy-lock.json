@@ -1,34 +1,10 @@
 {
-  "LuaSnip": {
-    "branch": "master",
-    "commit": "c4d6298347f7707e9757351b2ee03d0c00da5c20"
-  },
-  "cmp-nvim-lsp": {
-    "branch": "main",
-    "commit": "44b16d11215dce86f253ce0c30949813c0a90765"
-  },
-  "lazy.nvim": {
-    "branch": "main",
-    "commit": "3ad55ae678876516156cca2f361c51f7952a924b"
-  },
-  "lsp-zero.nvim": {
-    "branch": "v2.x",
-    "commit": "f084f4a6a716f55bf9c4026e73027bb24a0325a3"
-  },
-  "mason-lspconfig.nvim": {
-    "branch": "main",
-    "commit": "dfdd771b792fbb4bad8e057d72558255695aa1a7"
-  },
-  "mason.nvim": {
-    "branch": "main",
-    "commit": "0942198fb9a998b6ccee36fb8dd7495eb8ba659c"
-  },
-  "nvim-cmp": {
-    "branch": "main",
-    "commit": "5dce1b778b85c717f6614e3f4da45e9f19f54435"
-  },
-  "nvim-lspconfig": {
-    "branch": "master",
-    "commit": "a27356f1ef9c11e1f459cc96a3fcac5c265e72d6"
-  }
+  "LuaSnip": { "branch": "master", "commit": "c4d6298347f7707e9757351b2ee03d0c00da5c20" },
+  "cmp-nvim-lsp": { "branch": "main", "commit": "44b16d11215dce86f253ce0c30949813c0a90765" },
+  "lazy.nvim": { "branch": "main", "commit": "3ad55ae678876516156cca2f361c51f7952a924b" },
+  "lsp-zero.nvim": { "branch": "v2.x", "commit": "f084f4a6a716f55bf9c4026e73027bb24a0325a3" },
+  "mason-lspconfig.nvim": { "branch": "main", "commit": "dfdd771b792fbb4bad8e057d72558255695aa1a7" },
+  "mason.nvim": { "branch": "main", "commit": "0942198fb9a998b6ccee36fb8dd7495eb8ba659c" },
+  "nvim-cmp": { "branch": "main", "commit": "5dce1b778b85c717f6614e3f4da45e9f19f54435" },
+  "nvim-lspconfig": { "branch": "master", "commit": "a27356f1ef9c11e1f459cc96a3fcac5c265e72d6" }
 }

@@ -8,11 +8,11 @@ vim.opt.relativenumber = true
 vim.opt.wrap = false
 
 -- set tab width to 4 spaces
-vim.opt.tabstop = 4
+vim.opt.tabstop = 2
 -- set indentation to 4 spaces
-vim.opt.softtabstop = 4
+vim.opt.softtabstop = 2
 -- set how much a tab accounts in spaces
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 2
 -- use spaces instead of tabs
 vim.opt.expandtab = true
 -- set smart indentation (autoindent on new line)
@@ -51,6 +51,11 @@ vim.opt.shortmess:append("I")
 -- where to open windows
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+-- folding for python
+-- zM to mask all; zR to expand all
+vim.opt.foldmethod = "indent"
+vim.opt.foldnestmax = 2
 
 local generalSettingsGroup = vim.api.nvim_create_augroup('General settings', { clear = true })
 

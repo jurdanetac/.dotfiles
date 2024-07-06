@@ -4,8 +4,14 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+    -- Git diff markers in the sign column
+    use "airblade/vim-gitgutter"
+
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+
+    -- Prettier auto format
+    use 'prettier/vim-prettier'
 
     -- Neovim plugin for GitHub Copilot
     use 'github/copilot.vim'
