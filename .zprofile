@@ -1,3 +1,9 @@
+# cd
+alias cdu='cd ..'
+alias cdb='cd -'
+alias cdp='cd ~/Projects/'
+alias cdd='cd ~/Projects/dotfiles'
+
 # git
 alias ga='git add'
 alias gb='git branch'
