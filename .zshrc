@@ -138,6 +138,11 @@ alias grv='git remote -v'
 alias gs='git status'
 alias gsh='git stash'
 
+# node
+alias nrb='npm run build'
+alias nrd='npm run dev'
+alias nrl='npm run lint'
+
 # clear
 alias cls='clear'
 alias claer='clear'
