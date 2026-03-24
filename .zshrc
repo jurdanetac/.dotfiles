@@ -145,6 +145,8 @@ alias gsh='git stash'
 alias nrb='npm run build'
 alias nrd='npm run dev'
 alias nrl='npm run lint'
+alias nrp='npm run preview'
+alias nrs='npm run start'
 
 # clear
 alias cls='clear'
