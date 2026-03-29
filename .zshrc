@@ -170,3 +170,5 @@ if command -v bat >/dev/null 2>&1; then
 fi
 
 alias finder='open .'
+
+alias wu="wakeonlan 50:9A:4C:41:FB:FD"
