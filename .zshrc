@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="apple"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,8 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugins=(git)
-plugins=(last-working-dir)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,72 +102,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Aliases
-# cd
-alias cdu='cd ..'
-alias cdb='cd -'
-alias cdp='cd ~/Projects/'
-alias cdd='cd ~/Projects/dotfiles'
-
-# git
-alias ga='git add'
-alias gas='git add . && git status'
-alias gb='git branch'
-alias gc='git commit'
-alias gca='git commit --amend'
-alias gci='git commit --allow-empty -m "Trigger CI"'
-alias gcm='git commit -m'
-alias gcur='git commit -m "Update README"'
-alias gch='git checkout'
-alias gcl='git clone'
-alias gd='git diff'
-alias gds='git diff --staged'
-alias gf='git fetch'
-alias gi='git init'
-alias gl='git log'
-alias gm='git merge'
-alias gt='git log --graph --oneline --all'
-alias gp='echo "usage:\ngpl: git pull\ngph: git push\ngphf: git push --force"'
-alias gpl='git pull'
-alias gph='git push'
-alias gphf='git push --force'
-alias gu='git reset --soft HEAD~'
-alias gr='echo "TODO"'
-alias grs='git restore'
-alias grss='git restore --staged'
-# alias gra='git remote add "origin" git@github.com:jurdanetac/'
-alias grv='git remote -v'
-# alias grsu='git remote set-url "origin" git@github.com:jurdanetac/'
-alias gs='git status'
-alias gsh='git stash'
-
-# node
-alias nrb='npm run build'
-alias nrd='npm run dev'
-alias nrl='npm run lint'
-alias nrp='npm run preview'
-alias nrs='npm run start'
-
-# clear
-alias cls='clear'
-alias claer='clear'
-
-# zsh
-alias zs='source ~/.zshrc && echo ".zshrc reloaded!"'
-alias ze='vi ~/.zshrc && source ~/.zshrc' # Auto-reloads after save and exit vi
-
-# misc
-if command -v eza >/dev/null 2>&1; then
-    alias ls='eza -lahH'
-fi
-
-if command -v bat >/dev/null 2>&1; then
-    alias cat='bat'
-    alias unbat='alias cat="cat"'
-    alias rebat='alias cat="bat"'
-fi
-
-alias finder='open .'
-
-alias wu="wakeonlan 50:9A:4C:41:FB:FD"
