@@ -7,6 +7,7 @@ alias gc='git commit'
 alias gs='git status'
 
 alias ze='vim ~/.zshrc'
+alias ae='vim ~/.oh-my-zsh/custom/aliases.zsh'
 alias zs='source ~/.zshrc'
 alias ve='vim ~/.vimrc'
 
