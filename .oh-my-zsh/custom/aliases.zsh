@@ -7,6 +7,7 @@ alias ga='git add'
 alias gc='git commit'
 alias gl='git log'
 alias gs='git status'
+alias gu='git reset --soft HEAD~'  # git undo
 
 alias ze='vim ~/.zshrc'
 alias ae='vim ~/.oh-my-zsh/custom/aliases.zsh'
