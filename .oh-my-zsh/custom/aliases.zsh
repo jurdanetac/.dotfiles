@@ -11,6 +11,9 @@ alias ae='vim ~/.oh-my-zsh/custom/aliases.zsh'
 alias zs='source ~/.zshrc'
 alias ve='vim ~/.vimrc'
 
+alias dmk='python3 manage.py makemigrations'
+alias dmg='python3 manage.py migrate'
+
 if command -v eza >/dev/null 2>&1; then
     alias ls='eza -lahH'
 fi
