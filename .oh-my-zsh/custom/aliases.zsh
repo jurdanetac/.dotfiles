@@ -1,6 +1,7 @@
 alias cls='clear'
 
-alias cdd='cd ~/Projects/dotfiles'
+alias cdd='cd ~/Projects/dotfiles/'
+alias cdp='cd ~/Projects/'
 
 alias ga='git add'
 alias gc='git commit'
@@ -11,6 +12,7 @@ alias ae='vim ~/.oh-my-zsh/custom/aliases.zsh'
 alias zs='source ~/.zshrc'
 alias ve='vim ~/.vimrc'
 
+alias drs='python3 manage.py runserver'
 alias dmk='python3 manage.py makemigrations'
 alias dmg='python3 manage.py migrate'
 
