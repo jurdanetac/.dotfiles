@@ -12,6 +12,7 @@ alias ae='vim ~/.oh-my-zsh/custom/aliases.zsh'
 alias zs='source ~/.zshrc'
 alias ve='vim ~/.vimrc'
 
+alias venv='source .venv/bin/activate'
 alias drs='python3 manage.py runserver'
 alias dmk='python3 manage.py makemigrations'
 alias dmg='python3 manage.py migrate'
