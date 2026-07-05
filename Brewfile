@@ -2,6 +2,8 @@
 brew "bat"
 # Modern, maintained replacement for ls
 brew "eza"
+# Media player based on MPlayer and mplayer2
+brew "mpv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Display directories as trees (with optional color/HTML output)
