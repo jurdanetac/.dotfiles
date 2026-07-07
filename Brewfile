@@ -8,8 +8,6 @@ brew "mpv"
 brew "ripgrep"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Extremely fast Python package installer and resolver, written in Rust
-brew "uv"
 # Sends magic packets to wake up network-devices
 brew "wakeonlan"
 # Text editor
