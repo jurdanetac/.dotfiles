@@ -12,3 +12,5 @@ brew "tree"
 brew "wakeonlan"
 # Text editor
 cask "emacs-app"
+# Open-source code editor
+cask "visual-studio-code"
