@@ -16,12 +16,3 @@ brew "ripgrep"
 brew "wakeonlan"
 # Text editor
 cask "emacs-app"
-# Open-source code editor
-cask "visual-studio-code"
-vscode "hashicorp.terraform"
-vscode "ms-python.black-formatter"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-python.vscode-python-envs"
-vscode "vscodevim.vim"
