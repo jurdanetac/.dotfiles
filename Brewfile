@@ -16,3 +16,5 @@ brew "ripgrep"
 brew "wakeonlan"
 # Text editor
 cask "emacs-app"
+# Open-source BitTorrent client
+cask "transmission"
