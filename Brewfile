@@ -16,5 +16,7 @@ brew "ripgrep"
 brew "wakeonlan"
 # Text editor
 cask "emacs-app"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
 # Open-source BitTorrent client
 cask "transmission"
