@@ -1,4 +1,4 @@
-# dotfiles
+# `~/dotfiles`
 Personal configuraton files for my Mac, managed with GNU Stow. Under continuous revision and improvement.
 
 ## List of configs
