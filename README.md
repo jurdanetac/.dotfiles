@@ -12,12 +12,12 @@ Personal configuraton files for my Mac, managed with GNU Stow. Under continuous 
 ```
 $ git clone git@github.com:jurdanetac/dotfiles.git ~/dotfiles
 $ cd ~/dotfiles
-$ stow *
+$ stow emacs homebrew zsh vim
 ```
 ### Uninstall config
 ```
 $ cd ~/dotfiles
-$ stow -D *
+$ stow -D emacs homebrew zsh vim
 ```
 ### Homebrew
 [Install config](#install-config) and then run:
