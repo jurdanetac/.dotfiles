@@ -12,9 +12,11 @@ brew "mpv"
 brew "opentofu"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
 # Sends magic packets to wake up network-devices
 brew "wakeonlan"
-# Text editor
+# GNU Emacs text editor
 cask "emacs-app"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
