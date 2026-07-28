@@ -3,6 +3,7 @@ Personal configuraton files for my Mac, managed with GNU Stow. Under continuous 
 
 ## List of configs
 - Emacs
+- Git
 - Homebrew
 - Zsh / Oh My Zsh!
 - Vim
@@ -12,12 +13,12 @@ Personal configuraton files for my Mac, managed with GNU Stow. Under continuous 
 ```
 $ git clone git@github.com:jurdanetac/dotfiles.git ~/dotfiles
 $ cd ~/dotfiles
-$ stow emacs homebrew zsh vim
+$ stow emacs git homebrew zsh vim
 ```
 ### Uninstall config
 ```
 $ cd ~/dotfiles
-$ stow -D emacs homebrew zsh vim
+$ stow -D emacs git homebrew zsh vim
 ```
 ### Homebrew
 [Install config](#install-config) and then run:
