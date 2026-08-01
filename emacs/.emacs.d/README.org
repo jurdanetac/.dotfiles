@@ -22,9 +22,8 @@
   (defun open-init-file ()
     "Open Emacs configuration file, silently following symlinks."
     (interactive)
-    (let ((vc-follow-symlinks t))  ; Temporarily set to true only inside this block
-      (find-file (expand-file-name "README.org"
-  				 user-emacs-directory))))
+    (find-file (expand-file-name "README.org"
+    			       user-emacs-directory)))
 
   (global-set-key (kbd "C-c e") 'open-init-file)
   ;; FUNCTIONS END
