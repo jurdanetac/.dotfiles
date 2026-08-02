@@ -16,6 +16,8 @@ brew "ripgrep"
 brew "stow"
 # Sends magic packets to wake up network-devices
 brew "wakeonlan"
+# Extensible command-line tool to format YAML files
+brew "yamlfmt"
 # GNU Emacs text editor
 cask "emacs-app"
 # Terminal emulator as alternative to Apple's Terminal app
