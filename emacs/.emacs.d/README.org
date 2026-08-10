@@ -23,7 +23,7 @@
     "Open Emacs configuration file, silently following symlinks."
     (interactive)
     (find-file (expand-file-name "README.org"
-    			       user-emacs-directory)))
+      			       user-emacs-directory)))
 
   (global-set-key (kbd "C-c e") 'open-init-file)
   ;; FUNCTIONS END
@@ -67,5 +67,11 @@
 
   (use-package yaml-mode
     :ensure t)
+
+  (use-package dashboard
+    :ensure t
+    :config
+    (setq dashboard-startup-banner 3)
+    (dashboard-setup-startup-hook))
   ;; PACKAGES END
 #+END_SRC
