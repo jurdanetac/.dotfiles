@@ -1,5 +1,5 @@
 # Homebrew
-alias bbd='brew bundle dump --force --file="/.homebrew/Brewfile"'
+alias bbd='brew bundle dump --force --file="~/.homebrew/Brewfile"'
 
 # Git
 alias ga='git add'
