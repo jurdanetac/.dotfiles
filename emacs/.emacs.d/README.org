@@ -22,12 +22,21 @@
     (interactive)
     (find-file (expand-file-name "README.org"
       			       user-emacs-directory)))
+
+  (defun eval-init-file ()
+    "Source init.el"
+    (interactive)
+    (load-file user-init-file))
   ;; FUNCTIONS END
 
   ;; KEYBINDINGS START
+  ;; Control-
   (global-set-key (kbd "C-c i") 'indent-whole-buffer)
   (global-set-key (kbd "C-c e") 'open-init-file)
-  (global-set-key (kbd "s-/") 'comment-region) ;; ⌘-/
+  (global-set-key (kbd "C-c s") 'eval-init-file)
+
+  ;; ⌘-
+  (global-set-key (kbd "s-/") 'comment-region)
   ;; KEYBINDINGS END
 
   ;; PACKAGES START
