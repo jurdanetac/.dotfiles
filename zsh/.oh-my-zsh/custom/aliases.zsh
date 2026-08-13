@@ -1,6 +1,7 @@
 alias cls='clear'
 
 alias cdp='cd ~/Projects/'
+alias cdd='cd ~/dotfiles/'
 
 alias ga='git add'
 alias gc='git commit'
