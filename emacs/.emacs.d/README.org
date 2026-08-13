@@ -1,5 +1,5 @@
 #+BEGIN_SRC emacs-lisp :results none
-  ;; UI
+  ;; UI START
   (setq inhibit-startup-message t) ; Drop in to *scratch*
   (scroll-bar-mode -1)             ; Disable visible scrollbar
   (tool-bar-mode -1)               ; Disable the toolbar
@@ -9,7 +9,7 @@
   (setq visible-bell t)            ; Set up the visible bell
   ;; UI END
 
-  ;; FUNCTIONS
+  ;; FUNCTIONS START
   (defun indent-whole-buffer ()
     "Indent the entire buffer without affecting point or mark."
     (interactive)
@@ -17,18 +17,20 @@
       (save-restriction
         (indent-region (point-min) (point-max)))))
 
-  (global-set-key (kbd "C-c i") 'indent-whole-buffer)
-
   (defun open-init-file ()
     "Open Emacs configuration file, silently following symlinks."
     (interactive)
     (find-file (expand-file-name "README.org"
       			       user-emacs-directory)))
-
-  (global-set-key (kbd "C-c e") 'open-init-file)
   ;; FUNCTIONS END
 
-  ;; PACKAGES
+  ;; KEYBINDINGS START
+  (global-set-key (kbd "C-c i") 'indent-whole-buffer)
+  (global-set-key (kbd "C-c e") 'open-init-file)
+  (global-set-key (kbd "s-/") 'comment-region) ;; ⌘-/
+  ;; KEYBINDINGS END
+
+  ;; PACKAGES START
   (require 'package)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
