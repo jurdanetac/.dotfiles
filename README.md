@@ -24,6 +24,6 @@ $ stow -D emacs git homebrew zsh vim
 ### Homebrew
 [Install config](#install-config) and then run:
 ```
-$ brew bundle --global               # Install packages
-$ brew bundle dump --global --force  # Backup packages
+$ brew bundle --global                # Install packages
+$ brew bundle dump --global --force   # Backup packages
 ```

@@ -1,23 +1,31 @@
-alias cls='clear'
+# Homebrew
+alias bbd='brew bundle dump --force --file="/.homebrew/Brewfile"'
 
-alias cdp='cd ~/Projects/'
-alias cdd='cd ~/dotfiles/'
-
+# Git
 alias ga='git add'
 alias gc='git commit'
 alias gl='git log'
 alias gs='git status'
 alias gu='git reset --soft HEAD~'  # git undo
 
+# Vim
+alias ve='vim ~/.vim/vimrc'
+
+# Zsh
 alias ze='vim ~/.zshrc'
 alias ae='vim ~/.oh-my-zsh/custom/aliases.zsh'
 alias zs='source ~/.zshrc'
-alias ve='vim ~/.vimrc'
-
 alias venv='source .venv/bin/activate'
+
+# Django
 alias drs='python3 manage.py runserver'
 alias dmk='python3 manage.py makemigrations'
 alias dmg='python3 manage.py migrate'
+
+# Unix
+alias cls='clear'
+alias cdp='cd ~/Projects/'
+alias cdd='cd ~/dotfiles/'
 
 if command -v eza >/dev/null 2>&1; then
     alias ls='eza -lahH'
@@ -29,4 +37,5 @@ if command -v bat >/dev/null 2>&1; then
     alias rebat='alias cat="bat"'
 fi
 
+# macOS
 alias finder='open .'
