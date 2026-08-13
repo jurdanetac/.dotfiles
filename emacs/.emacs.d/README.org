@@ -37,8 +37,7 @@
   (use-package gruvbox-theme
     :ensure t
     :config
-    (load-theme 'gruvbox-dark-medium t)  
-    )
+    (load-theme 'gruvbox-dark-medium t))
 
   (use-package highlight-indentation
     :ensure t)
@@ -51,8 +50,7 @@
      
      '(git-gutter:modified-sign "~")
      '(git-gutter:added-sign "++")
-     '(git-gutter:deleted-sign "--")
-     )
+     '(git-gutter:deleted-sign "--"))
 
     (set-face-foreground 'git-gutter:added "green")
     (set-face-foreground 'git-gutter:modified "yellow")
@@ -76,5 +74,14 @@
     (setq dashboard-startup-banner 3)
     (setq dashboard-center-content t)
     (dashboard-setup-startup-hook))
+
+  (use-package indent-bars
+    :ensure t
+    :custom
+    (indent-bars-prefer-character t) ;; Turn off the stipple and use old fashioned bar characters
+    (indent-bars-color-by-depth nil)  ;; Disable rainbow colors
+    (indent-bars-color '(shadow :blend 0.4))  ;; Dim gray for normal lines
+    (indent-bars-highlight-current-depth '(:color "white" :blend 0.8))  ;; White for active depth
+    :hook (python-mode yaml-mode))  ;; Modes to activate
   ;; PACKAGES END
 #+END_SRC
