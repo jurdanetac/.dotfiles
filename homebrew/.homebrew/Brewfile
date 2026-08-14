@@ -4,6 +4,8 @@ brew "tree"
 brew "ansible"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Python code formatter
+brew "black"
 # Modern, maintained replacement for ls
 brew "eza"
 # Interactive computing in Python
