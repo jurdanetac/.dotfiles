@@ -14,6 +14,8 @@ brew "ipython"
 brew "mpv"
 # Drop-in replacement for Terraform. Infrastructure as Code Tool
 brew "opentofu"
+# Ruby version manager
+brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
