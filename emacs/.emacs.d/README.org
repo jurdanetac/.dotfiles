@@ -91,6 +91,6 @@
     (indent-bars-color-by-depth nil)  ;; Disable rainbow colors
     (indent-bars-color '(shadow :blend 0.4))  ;; Dim gray for normal lines
     (indent-bars-highlight-current-depth '(:color "white" :blend 0.8))  ;; White for active depth
-    :hook (python-mode yaml-mode))  ;; Modes to activate
+    :hook (python-mode ruby-mode yaml-mode))  ;; Modes to activate
   ;; PACKAGES END
 #+END_SRC
