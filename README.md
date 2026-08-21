@@ -16,18 +16,19 @@ Personal configuraton files for my Mac, managed with GNU Stow. Under continuous 
 - Homebrew
 - Zsh / Oh My Zsh!
 - Vim
+- Zed
 
 ## Usage
 ### Install config
 ```
 $ git clone git@github.com:jurdanetac/dotfiles.git ~/dotfiles
 $ cd ~/dotfiles
-$ stow emacs git homebrew zsh vim
+$ stow emacs git homebrew zsh vim zed
 ```
 ### Uninstall config
 ```
 $ cd ~/dotfiles
-$ stow -D emacs git homebrew zsh vim
+$ stow -D emacs git homebrew zsh vim zed
 ```
 ### Homebrew
 [Install config](#install-config) and then run:
