@@ -4,8 +4,6 @@ brew "tree"
 brew "ansible"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Python code formatter
-brew "black"
 # Modern, maintained replacement for ls
 brew "eza"
 # Interactive computing in Python
@@ -24,9 +22,11 @@ brew "stow"
 brew "wakeonlan"
 # Extensible command-line tool to format YAML files
 brew "yamlfmt"
-# GNU Emacs text editor
-cask "emacs-app"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# System monitor for the menu bar
+cask "stats"
 # Open-source BitTorrent client
 cask "transmission"
+# Multiplayer code editor
+cask "zed"
