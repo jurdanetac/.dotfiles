@@ -28,5 +28,3 @@ cask "iterm2"
 cask "stats"
 # Open-source BitTorrent client
 cask "transmission"
-# Multiplayer code editor
-cask "zed"
