@@ -107,7 +107,14 @@ Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 call plug#end()
+
+if has('termguicolors')
+  set termguicolors
+endif
+
+set background=dark
 silent! colorscheme gruvbox
+
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
