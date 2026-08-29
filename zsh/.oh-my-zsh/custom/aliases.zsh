@@ -5,6 +5,8 @@ alias bbd='brew bundle dump --force --file="~/.homebrew/Brewfile"'
 alias ga='git add'
 alias gc='git commit'
 alias gl='git log'
+alias grs='git restore'
+alias grm='git remote'
 alias gs='git status'
 alias gu='git reset --soft HEAD~'  # git undo
 
