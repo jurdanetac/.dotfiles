@@ -104,5 +104,10 @@ endif
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'Yggdroot/indentLine'
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 silent! colorscheme gruvbox
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
