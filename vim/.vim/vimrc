@@ -103,5 +103,6 @@ endif
 
 call plug#begin()
 Plug 'morhetz/gruvbox'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 silent! colorscheme gruvbox
