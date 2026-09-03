@@ -12,6 +12,8 @@ brew "ipython"
 brew "mpv"
 # Drop-in replacement for Terraform. Infrastructure as Code Tool
 brew "opentofu"
+# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
+brew "prettier"
 # Ruby version manager
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
