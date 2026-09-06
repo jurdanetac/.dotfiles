@@ -20,8 +20,6 @@ brew "rbenv"
 brew "ripgrep"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
-# Sends magic packets to wake up network-devices
-brew "wakeonlan"
 # Extensible command-line tool to format YAML files
 brew "yamlfmt"
 # Terminal emulator as alternative to Apple's Terminal app
